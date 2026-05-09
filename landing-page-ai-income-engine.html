@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Income Engine — $37</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0D1117;--ink2:#161B22;--gold:#C9A84C;--gold2:#E8C97A;--gold3:rgba(201,168,76,0.15);--fog:#F5F0E8;--muted:#6B6560;--border:rgba(201,168,76,0.18)}
+body{font-family:'DM Sans',sans-serif;background:var(--ink);color:var(--fog);overflow-x:hidden}
+.topbar{height:2px;background:linear-gradient(90deg,transparent 0%,var(--gold) 30%,var(--gold2) 50%,var(--gold) 70%,transparent 100%)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;border-bottom:1px solid var(--border)}
+.nav-brand{font-family:'Playfair Display',serif;font-size:14px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase}
+.nav-tag{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.08em}
+.hero{max-width:800px;margin:0 auto;padding:5rem 2rem 3rem;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;padding:6px 20px;border:1px solid var(--border);border-radius:2px}
+.eyebrow::before,.eyebrow::after{content:'';width:24px;height:1px;background:rgba(201,168,76,0.4)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:1.02;letter-spacing:-0.02em;margin-bottom:1.5rem}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1.1rem;color:rgba(245,240,232,0.6);max-width:520px;margin:0 auto 3rem;font-weight:300;line-height:1.75}
+.cta-stack{display:flex;flex-direction:column;align-items:center;gap:1rem}
+.btn-primary{display:inline-flex;align-items:center;gap:12px;background:var(--gold);color:#0D1117;font-weight:500;font-size:15px;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;letter-spacing:0.02em;transition:all .2s}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-sub{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase}
+.divider{display:flex;align-items:center;gap:1rem;max-width:500px;margin:3rem auto;padding:0 2rem}
+.dl{flex:1;height:1px;background:var(--border)}
+.dd{width:5px;height:5px;background:rgba(201,168,76,0.5);transform:rotate(45deg);flex-shrink:0}
+.stats{display:flex;justify-content:center;gap:4rem;padding:2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat-v{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;color:var(--gold);display:block}
+.stat-l{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase}
+section{position:relative}
+.inner{max-width:800px;margin:0 auto;padding:4rem 2rem}
+.label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(201,168,76,0.6);margin-bottom:0.75rem}
+h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:1rem}
+h2 em{font-style:italic;color:var(--gold)}
+.grid6{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2.5rem}
+.gc{background:var(--ink2);padding:1.75rem;transition:background .2s}
+.gc:hover{background:#1C2128}
+.gn{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:rgba(201,168,76,0.12);line-height:1;margin-bottom:.6rem;display:block}
+.gt{font-size:13px;font-weight:500;color:var(--gold2);margin-bottom:.4rem}
+.gd{font-size:12px;color:rgba(245,240,232,0.45);line-height:1.6}
+.prompts{border:1px solid var(--border);margin-top:2.5rem}
+.pr{display:flex;gap:1.5rem;padding:1.2rem 1.75rem;border-bottom:1px solid rgba(201,168,76,0.06);transition:background .15s}
+.pr:last-child{border:none}
+.pr:hover{background:rgba(201,168,76,0.03)}
+.pi{font-family:'DM Mono',monospace;font-size:10px;color:rgba(201,168,76,0.5);min-width:26px;padding-top:2px}
+.pt{font-size:13px;color:rgba(245,240,232,0.65);line-height:1.55}
+.pt strong{color:var(--fog);font-weight:500}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.wcard{padding:1.75rem;border:1px solid var(--border)}
+.wcard.y{border-color:rgba(201,168,76,0.4)}
+.wcard.n{border-color:rgba(107,101,96,0.3)}
+.wl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:1rem}
+.wcard.y .wl{color:var(--gold)}
+.wcard.n .wl{color:var(--muted)}
+.wi{display:flex;gap:9px;margin-bottom:.65rem;font-size:13px;line-height:1.5;align-items:flex-start}
+.wcard.y .wi{color:rgba(245,240,232,0.7)}
+.wcard.n .wi{color:rgba(107,101,96,0.65)}
+.wcard.y .wi::before{content:'◆';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:3px}
+.wcard.n .wi::before{content:'◇';color:var(--muted);font-size:10px;flex-shrink:0;margin-top:3px}
+.tblock{margin-top:1rem;padding:1.75rem 2rem;border-left:2px solid var(--gold);background:rgba(201,168,76,0.03)}
+.tq{font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;line-height:1.65;color:var(--fog);margin-bottom:.75rem}
+.ta{font-family:'DM Mono',monospace;font-size:10px;color:rgba(201,168,76,0.6);letter-spacing:0.08em}
+.pbox{margin-top:2.5rem;border:1px solid var(--border);padding:2.5rem;text-align:center;position:relative;overflow:hidden}
+.pbox::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent)}
+.pwas{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);text-decoration:line-through;margin-bottom:.4rem}
+.pval{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:var(--gold);line-height:1}
+.pcur{font-size:2rem;vertical-align:top;margin-top:.75rem;display:inline-block}
+.plabel{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.15em;color:var(--muted);margin-bottom:2rem;text-transform:uppercase}
+.ilist{text-align:left;margin:0 auto 2rem;display:inline-block}
+.ii{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(245,240,232,0.65);margin-bottom:.45rem}
+.ii::before{content:'◆';color:var(--gold);font-size:10px}
+.btnlg{display:inline-flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:380px;background:var(--gold);color:#0D1117;font-weight:500;font-size:16px;padding:1.1rem 2rem;border-radius:2px;text-decoration:none;transition:all .2s}
+.btnlg:hover{background:var(--gold2);transform:translateY(-2px)}
+.pfooter{margin-top:.75rem;font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+.faq-item{border-bottom:1px solid rgba(201,168,76,0.06);padding:1.5rem 0}
+.faq-item:first-child{border-top:1px solid rgba(201,168,76,0.06)}
+.fq{font-size:14px;font-weight:500;color:var(--fog);margin-bottom:.6rem;display:flex;gap:10px}
+.fq::before{content:'Q —';font-family:'DM Mono',monospace;font-size:10px;color:rgba(201,168,76,0.5);flex-shrink:0;padding-top:3px}
+.fa{font-size:12px;color:rgba(245,240,232,0.5);line-height:1.7;padding-left:3rem}
+footer{padding:3rem 2rem;text-align:center;border-top:1px solid var(--border)}
+.flogo{font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);margin-bottom:.75rem;font-style:italic}
+.fcopy{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero>*{animation:up .65s ease both}
+.eyebrow{animation-delay:.1s}h1{animation-delay:.2s}.hero-sub{animation-delay:.3s}.cta-stack{animation-delay:.4s}
+@media(max-width:580px){.grid6,.who{grid-template-columns:1fr}.stats{gap:2rem}.pval{font-size:3.5rem}}
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<nav>
+  <div class="nav-brand">Zaden James</div>
+  <div class="nav-tag">$37 · Instant Download · 18 Pages</div>
+</nav>
+<div class="hero">
+  <div class="eyebrow">The Automation System</div>
+  <h1>The AI<br><em>Income Engine</em></h1>
+  <p class="hero-sub">The complete system for building automated passive income with AI — prompts, Make.com setup, email funnels, and a 30-day roadmap. From $0 to running on autopilot.</p>
+  <div class="cta-stack">
+    <a href="https://zadenjames.gumroad.com/l/wzfnkg" class="btn-primary" target="_blank">Get instant access — $37 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <span class="btn-sub">PDF · 18 pages · Delivered in seconds</span>
+  </div>
+</div>
+<div class="stats">
+  <div><span class="stat-v">50+</span><span class="stat-l">Prompts included</span></div>
+  <div><span class="stat-v">$0</span><span class="stat-l">Budget required</span></div>
+  <div><span class="stat-v">30</span><span class="stat-l">Day roadmap</span></div>
+  <div><span class="stat-v">24/7</span><span class="stat-l">Autopilot system</span></div>
+</div>
+<section><div class="inner">
+  <div class="label">What's inside</div>
+  <h2>Six chapters.<br><em>One complete system.</em></h2>
+  <div class="grid6">
+    <div class="gc"><span class="gn">01</span><div class="gt">The new rules of online income</div><div class="gd">Why the old audience-first model is broken and what the system-first model replaces it with.</div></div>
+    <div class="gc"><span class="gn">02</span><div class="gt">Your first digital product in 48 hours</div><div class="gd">The exact product type that converts cold traffic best, and how to build and list it this weekend.</div></div>
+    <div class="gc"><span class="gn">03</span><div class="gt">The content engine</div><div class="gd">Make.com + OpenAI + Buffer — the automation that produces 12 posts per day across 3 platforms.</div></div>
+    <div class="gc"><span class="gn">04</span><div class="gt">The email funnel</div><div class="gd">Building the list from zero and the 5-email sequence that converts subscribers to buyers automatically.</div></div>
+    <div class="gc"><span class="gn">05</span><div class="gt">Automation architecture</div><div class="gd">The full system wired together — every scenario, every module, every connection documented.</div></div>
+    <div class="gc"><span class="gn">06</span><div class="gt">Scaling to consistent income</div><div class="gd">The compounding effect, the $47 bundle upsell, affiliate income stacking, and what to do with your first $500.</div></div>
+  </div>
+  <div style="height:1rem"></div>
+  <div class="label" style="margin-top:2rem">Bonus content</div>
+  <div class="grid6" style="margin-top:1rem">
+    <div class="gc"><span class="gn">+</span><div class="gt">30-day launch roadmap</div><div class="gd">Hour-by-hour Week 1, then week-by-week through Day 30. Exact actions, exact targets.</div></div>
+    <div class="gc"><span class="gn">+</span><div class="gt">48-hour quick-start checklist</div><div class="gd">Every account, every setting, every step to go from zero to live in 48 hours.</div></div>
+    <div class="gc"><span class="gn">+</span><div class="gt">Complete tools reference</div><div class="gd">Every free tool used in the system with exact settings, free tier limits, and what each one does.</div></div>
+    <div class="gc"><span class="gn">+</span><div class="gt">Daily operations prompt library</div><div class="gd">The 3 ChatGPT prompts used every single day to run the entire operation.</div></div>
+  </div>
+</div></section>
+<div class="divider"><div class="dl"></div><div class="dd"></div><div class="dl"></div></div>
+<section><div class="inner">
+  <div class="label">Sample prompts</div>
+  <h2>What you actually<br><em>receive</em></h2>
+  <div class="prompts">
+    <div class="pr"><span class="pi">01</span><div class="pt"><strong>The Hook Machine</strong> — Generate 10 scroll-stopping opening lines for a post about [topic]. Each hook creates curiosity or FOMO in under 12 words.</div></div>
+    <div class="pr"><span class="pi">07</span><div class="pt"><strong>Recycled Content Rewriter</strong> — Rewrite this viral Reddit post as original content for Twitter, LinkedIn, and email. Keep the insight, make it feel fresh and native to each platform.</div></div>
+    <div class="pr"><span class="pi">12</span><div class="pt"><strong>PDF Product Creator</strong> — Create full content for a 10-page beginner guide titled "[title]". Include intro, 7 actionable sections, and a CTA. Ready to format and sell.</div></div>
+    <div class="pr"><span class="pi">23</span><div class="pt"><strong>Story Email</strong> — Write an email telling the story of how I discovered [method]. Personal, relatable, transitioning into why I built [product name].</div></div>
+    <div class="pr"><span class="pi">34</span><div class="pt"><strong>Make.com Scenario Blueprint</strong> — Describe the full automation: RSS feed monitoring, keyword filtering, OpenAI rewriting, Buffer scheduling. Every module documented.</div></div>
+    <div class="pr"><span class="pi">50</span><div class="pt"><strong>The Exit Strategy</strong> — Design a plan to either scale this business to $[higher amount] or package it as a done-for-you system to sell. Steps for both paths.</div></div>
+  </div>
+</div></section>
+<section style="background:rgba(201,168,76,0.025);border-top:1px solid var(--border);border-bottom:1px solid var(--border)"><div class="inner">
+  <div class="label">Honest clarity</div>
+  <h2>This is for you.<br>Or it <em>isn't.</em></h2>
+  <div class="who">
+    <div class="wcard y"><div class="wl">This is for you if —</div><div class="wi">You want to earn online but have no idea what to sell</div><div class="wi">You've tried ChatGPT but don't know what to actually ask it</div><div class="wi">You want content that posts itself and a list that sells for you</div><div class="wi">You're starting with $0 and need a system on free tools</div></div>
+    <div class="wcard n"><div class="wl">This isn't for you if —</div><div class="wi">You want overnight income without any implementation</div><div class="wi">You won't spend one weekend setting the system up</div><div class="wi">You already have a working automated system generating sales</div></div>
+  </div>
+  <div class="tblock"><div class="tq">"Posted my first Reddit post using Prompt 3 and got 47 upvotes and 8 DMs in the first hour. The hook formulas alone are worth more than the price."</div><div class="ta">— Early reader, r/sidehustle</div></div>
+  <div class="tblock" style="margin-top:1rem"><div class="tq">"Had my Gumroad product live, email sequence running, and first automated content posting — all in one weekend. The Make.com blueprint is the most useful thing in the pack."</div><div class="ta">— Digital product creator, Australia</div></div>
+</div></section>
+<section><div class="inner">
+  <div class="label">Your investment</div>
+  <h2>One decision.<br><em>Infinite output.</em></h2>
+  <div class="pbox">
+    <div class="pwas">Valued at $97+</div>
+    <div class="pval"><span class="pcur">$</span>37</div>
+    <div class="plabel">One-time · No subscription · Yours forever</div>
+    <div class="ilist">
+      <div class="ii">50 copy-paste ChatGPT prompts</div>
+      <div class="ii">6 full chapters + 4 bonus sections</div>
+      <div class="ii">30-day hour-by-hour launch roadmap</div>
+      <div class="ii">Complete Make.com automation blueprint</div>
+      <div class="ii">48-hour quick-start checklist</div>
+      <div class="ii">Works with free ChatGPT — no paid plan needed</div>
+      <div class="ii">18 pages — PDF, instant delivery</div>
+    </div>
+    <a href="https://zadenjames.gumroad.com/l/wzfnkg" class="btnlg" target="_blank">Get The AI Income Engine — $37 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <div class="pfooter">Secure checkout via Gumroad · PDF delivered instantly · 18 pages</div>
+  </div>
+</div></section>
+<section><div class="inner">
+  <div class="label">Common questions</div>
+  <h2>Before you<br><em>decide</em></h2>
+  <div style="margin-top:2rem">
+    <div class="faq-item"><div class="fq">Do I need the paid version of ChatGPT?</div><div class="fa">No. Every prompt works with the free ChatGPT tier. GPT-4 produces better results but is not required to start.</div></div>
+    <div class="faq-item"><div class="fq">How quickly can I actually use this?</div><div class="fa">PDF downloads immediately. First prompt running in 10 minutes. Full system live in one focused weekend.</div></div>
+    <div class="faq-item"><div class="fq">I have no audience. Will this still work?</div><div class="fa">Yes — that is exactly who this was built for. Zero audience required. The system generates traffic from Reddit, Twitter, and LinkedIn without existing followers.</div></div>
+    <div class="faq-item"><div class="fq">What if I'm not technical?</div><div class="fa">The prompts handle the technical work. The Make.com blueprint explains every module in plain language. If you can copy and paste, you can run this system.</div></div>
+  </div>
+</div></section>
+<section style="text-align:center;padding:4rem 2rem;border-top:1px solid var(--border)">
+  <div class="eyebrow" style="justify-content:center;margin-bottom:2rem">The decision</div>
+  <h2 style="max-width:480px;margin:0 auto 1.5rem">One weekend.<br><em>A system that runs forever.</em></h2>
+  <p style="color:rgba(245,240,232,0.45);max-width:380px;margin:0 auto 2.5rem;font-size:.95rem">The system is built. The prompts are ready. The only variable is whether you start today.</p>
+  <a href="https://zadenjames.gumroad.com/l/wzfnkg" class="btn-primary" target="_blank">Get the Engine — $37 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <div style="margin-top:.75rem;font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase">Instant · PDF · $37 one-time</div>
+</section>
+<footer><div class="flogo">Zaden James</div><div class="fcopy">© 2025 · The AI Income Engine · All rights reserved</div></footer>
+<div class="topbar"></div>
+</body>
+</html>
