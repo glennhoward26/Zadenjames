@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Faceless Content Playbook — $27</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0A1A0F;--ink2:#0F2318;--g:#4CAF7D;--g2:#7DD4A8;--g3:rgba(76,175,125,0.12);--fog:#E8F5EE;--muted:#5A7A65;--bd:rgba(76,175,125,0.15)}
+body{font-family:'Space Grotesk',sans-serif;background:var(--ink);color:var(--fog);overflow-x:hidden}
+.stripe{height:3px;background:repeating-linear-gradient(90deg,var(--g) 0px,var(--g) 8px,transparent 8px,transparent 16px)}
+nav{padding:1.2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--bd)}
+.logo{font-family:'Syne',sans-serif;font-size:15px;font-weight:800;letter-spacing:0.05em;color:var(--g);text-transform:uppercase}
+.tag{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted)}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:85vh;max-width:1100px;margin:0 auto}
+.hero-left{padding:4rem 2.5rem;border-right:1px solid var(--bd);display:flex;flex-direction:column;justify-content:center}
+.hero-right{padding:4rem 2.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--ink2)}
+.badge{display:inline-block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--g);border:1px solid var(--bd);padding:5px 14px;margin-bottom:2rem}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,5.5vw,4.5rem);font-weight:800;line-height:1.0;letter-spacing:-0.02em;margin-bottom:1.5rem}
+h1 span{display:block;color:var(--g)}
+.hs{font-size:1rem;color:rgba(232,245,238,0.55);line-height:1.8;font-weight:300;margin-bottom:2.5rem}
+.price-lg{font-family:'Syne',sans-serif;font-size:5rem;font-weight:800;color:var(--g);line-height:1;margin-bottom:.5rem}
+.price-note{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:2rem}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--g);color:#0A1A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;letter-spacing:0.04em;padding:.9rem 2rem;text-decoration:none;transition:all .2s;text-transform:uppercase}
+.btn:hover{background:var(--g2);transform:translateY(-2px)}
+.hero-right-content h3{font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem}
+.ch-list{list-style:none}
+.ch-list li{display:flex;gap:14px;padding:.85rem 0;border-bottom:1px solid rgba(76,175,125,0.08);font-size:13px;align-items:flex-start}
+.ch-list li:last-child{border:none}
+.ch-num{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);min-width:24px;padding-top:2px}
+.ch-title{font-weight:500;color:var(--fog)}
+.ch-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.inner{max-width:1000px;margin:0 auto;padding:4rem 2.5rem}
+.sec-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+h2{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-bottom:1rem}
+h2 span{color:var(--g)}
+.hooks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);margin-top:2rem}
+.hk{background:var(--ink);padding:1.5rem;transition:background .15s}
+.hk:hover{background:var(--ink2)}
+.hk-num{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);margin-bottom:.6rem}
+.hk-text{font-size:12px;color:rgba(232,245,238,0.6);line-height:1.6;font-style:italic}
+.hk-text strong{color:var(--fog);font-style:normal}
+.plat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem}
+.pc{border:1px solid var(--bd);padding:1.75rem}
+.pc-icon{font-size:1.5rem;margin-bottom:.75rem}
+.pc-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--g);margin-bottom:.5rem}
+.pc-desc{font-size:12px;color:rgba(232,245,238,0.5);line-height:1.6}
+.tbox{background:var(--ink2);border-left:3px solid var(--g);padding:1.75rem 2rem;margin-top:1rem}
+.ttext{font-size:1.1rem;color:var(--fog);line-height:1.65;margin-bottom:.6rem;font-weight:300}
+.tauth{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted)}
+.pricebox{background:var(--ink2);border:1px solid var(--bd);padding:2.5rem;margin-top:2rem;position:relative}
+.pricebox::after{content:'BEST VALUE';position:absolute;top:-1px;right:2rem;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.2em;background:var(--g);color:#0A1A0F;padding:3px 10px}
+.pb-price{font-family:'Syne',sans-serif;font-size:4.5rem;font-weight:800;color:var(--g);margin-bottom:.25rem}
+.pb-was{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);text-decoration:line-through;margin-bottom:.25rem}
+.pb-note{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-bottom:2rem;letter-spacing:.08em}
+.inc{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:2rem;text-align:left}
+.inc-i{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(232,245,238,0.6)}
+.inc-i::before{content:'→';color:var(--g);font-size:11px}
+.btn-full{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--g);color:#0A1A0F;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;padding:1rem;text-decoration:none;text-transform:uppercase;letter-spacing:.04em;transition:all .2s}
+.btn-full:hover{background:var(--g2)}
+.faq{margin-top:2rem}
+.fq-item{border-bottom:1px solid rgba(76,175,125,0.08);padding:1.25rem 0}
+.fq-item:first-child{border-top:1px solid rgba(76,175,125,0.08)}
+.fq-q{font-size:14px;font-weight:500;margin-bottom:.5rem;display:flex;gap:10px;align-items:flex-start}
+.fq-q::before{content:'//';font-family:'Space Mono',monospace;font-size:11px;color:var(--g);flex-shrink:0}
+.fq-a{font-size:12px;color:rgba(232,245,238,0.5);line-height:1.7;padding-left:2rem}
+footer{padding:2.5rem;text-align:center;border-top:1px solid var(--bd)}
+.fl{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--g);margin-bottom:.5rem}
+.fc{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.1em}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.hero-left{border-right:none;border-bottom:1px solid var(--bd)}.hooks-grid{grid-template-columns:1fr}.plat-grid{grid-template-columns:1fr}.inc{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<nav><div class="logo">Zaden James</div><div class="tag">$27 · 18 Pages · Instant PDF</div></nav>
+<div class="hero">
+  <div class="hero-left">
+    <div class="badge">The Content System</div>
+    <h1>The Faceless<br><span>Content</span><br>Playbook</h1>
+    <p class="hs">Build viral reach and a loyal audience without ever showing your face. The complete system — content pillars, hook formulas, platform strategy, and monetisation without selling.</p>
+    <a href="https://zadenjames.gumroad.com/l/ybtyz" class="btn" target="_blank">Get Instant Access — $27 →</a>
+  </div>
+  <div class="hero-right">
+    <h3>What's inside — 6 chapters + bonuses</h3>
+    <ul class="ch-list">
+      <li><span class="ch-num">01</span><div><div class="ch-title">The faceless advantage</div><div class="ch-sub">Why anonymous accounts grow faster than personal brands</div></div></li>
+      <li><span class="ch-num">02</span><div><div class="ch-title">Content pillars</div><div class="ch-sub">The 3-pillar system and how to build yours in one afternoon</div></div></li>
+      <li><span class="ch-num">03</span><div><div class="ch-title">The hook formula</div><div class="ch-sub">7 archetypes + the ChatGPT hook generator prompt</div></div></li>
+      <li><span class="ch-num">04</span><div><div class="ch-title">Platform mastery</div><div class="ch-sub">Reddit, Twitter, LinkedIn, Pinterest — native strategies for each</div></div></li>
+      <li><span class="ch-num">05</span><div><div class="ch-title">Monetising without selling</div><div class="ch-sub">Soft sell, affiliate integration, email capture at scale</div></div></li>
+      <li><span class="ch-num">06</span><div><div class="ch-title">The long game</div><div class="ch-sub">Building a sellable content asset, not a burnout hustle</div></div></li>
+      <li><span class="ch-num">+</span><div><div class="ch-title">30 proven hook templates</div><div class="ch-sub">Tested across Reddit, Twitter, and LinkedIn — ready to use</div></div></li>
+      <li><span class="ch-num">+</span><div><div class="ch-title">Weekly content calendar</div><div class="ch-sub">90-day theme progression and daily posting schedule</div></div></li>
+    </ul>
+  </div>
+</div>
+<section style="border-top:1px solid var(--bd)"><div class="inner">
+  <div class="sec-label">The hook system</div>
+  <h2>30 hooks that<br><span>stop scrolls</span></h2>
+  <div class="hooks-grid">
+    <div class="hk"><div class="hk-num">Type 01</div><div class="hk-text"><strong>Specific Number:</strong> "I scheduled 84 posts in 20 minutes. Here is the exact setup."</div></div>
+    <div class="hk"><div class="hk-num">Type 02</div><div class="hk-text"><strong>Counterintuitive:</strong> "Stop trying to grow your audience. Build a system instead."</div></div>
+    <div class="hk"><div class="hk-num">Type 03</div><div class="hk-text"><strong>Honest Admission:</strong> "I wasted 4 months on the wrong strategy. What actually works:"</div></div>
+    <div class="hk"><div class="hk-num">Type 04</div><div class="hk-text"><strong>Specific Result:</strong> "$340 in 30 days, no audience, no ads, $0 budget."</div></div>
+    <div class="hk"><div class="hk-num">Type 05</div><div class="hk-text"><strong>Knowledge Gap:</strong> "There is one reason most content fails. It has nothing to do with quality."</div></div>
+    <div class="hk"><div class="hk-num">Type 06</div><div class="hk-text"><strong>Direct Challenge:</strong> "You do not need 10,000 followers to earn from content."</div></div>
+    <div class="hk"><div class="hk-num">Type 07</div><div class="hk-text"><strong>Behind-the-Scenes:</strong> "Every tool I use to automate 12 posts per day — complete setup."</div></div>
+    <div class="hk"><div class="hk-num">Type 08</div><div class="hk-text"><strong>Myth Buster:</strong> "Posting more often is not the answer. Here is what the data actually shows."</div></div>
+    <div class="hk"><div class="hk-num">+22 more</div><div class="hk-text"><strong>Full library inside:</strong> all 30 templates with platform-specific adaptations for Reddit, Twitter, LinkedIn, and Pinterest.</div></div>
+  </div>
+</div></section>
+<section style="background:var(--ink2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)"><div class="inner">
+  <div class="sec-label">Platform strategy</div>
+  <h2>Native to<br><span>every platform</span></h2>
+  <div class="plat-grid">
+    <div class="pc"><div class="pc-icon" style="color:#ff6534">◉</div><div class="pc-name">Reddit</div><div class="pc-desc">The trust platform. Substance over personality. Personal stories, genuine insight, community-first. Product link in comments only. The most valuable platform when used correctly.</div></div>
+    <div class="pc"><div class="pc-icon" style="color:#1da1f2">◉</div><div class="pc-name">Twitter / X</div><div class="pc-desc">The reach platform. Bold hooks, 10-tweet threads, active replies. The algorithm rewards original insight. Three threads per week outperforms seven single tweets.</div></div>
+    <div class="pc"><div class="pc-icon" style="color:#0a66c2">◉</div><div class="pc-name">LinkedIn</div><div class="pc-desc">The credibility platform. Highest average income of any social platform. Counterintuitive openings, bullet-point body, question ending. No hashtags. Link in first comment.</div></div>
+    <div class="pc"><div class="pc-icon" style="color:#e60023">◉</div><div class="pc-name">Pinterest</div><div class="pc-desc">The discovery platform. Most underused in the AI income space. Pins last months, not hours. Search-optimised titles drive traffic for years after posting.</div></div>
+  </div>
+</div></section>
+<section><div class="inner">
+  <div class="sec-label">Social proof</div>
+  <h2>What early<br><span>readers say</span></h2>
+  <div class="tbox"><div class="ttext">"The platform strategy section alone changed how I approach every piece of content. The LinkedIn formula — counterintuitive opener, three bullets, question — got my first post to 4,000 impressions with zero followers."</div><div class="tauth">— Early reader, LinkedIn creator</div></div>
+  <div class="tbox" style="margin-top:1rem"><div class="ttext">"The 30 hook templates are the most practical thing in the pack. I used Type 4 (Specific Result) on my first Reddit post and it hit 200 upvotes in 3 hours."</div><div class="tauth">— Side hustle creator, Twitter</div></div>
+</div></section>
+<section style="background:var(--ink2);border-top:1px solid var(--bd)"><div class="inner">
+  <div class="sec-label">Your investment</div>
+  <h2>Everything you need to<br><span>build viral reach</span></h2>
+  <div class="pricebox">
+    <div class="pb-was">Valued at $67+</div>
+    <div class="pb-price">$27</div>
+    <div class="pb-note">ONE-TIME · NO SUBSCRIPTION · YOURS FOREVER</div>
+    <div class="inc">
+      <div class="inc-i">6 chapters of platform strategy</div>
+      <div class="inc-i">30 proven hook templates</div>
+      <div class="inc-i">Weekly content calendar template</div>
+      <div class="inc-i">90-day content theme progression</div>
+      <div class="inc-i">Faceless brand identity worksheet</div>
+      <div class="inc-i">ChatGPT hook generator prompt</div>
+      <div class="inc-i">18 pages — PDF, instant delivery</div>
+      <div class="inc-i">Works with zero existing audience</div>
+    </div>
+    <a href="https://zadenjames.gumroad.com/l/ybtyz" class="btn-full" target="_blank">Get The Faceless Content Playbook — $27 →</a>
+    <div style="margin-top:.75rem;font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;text-align:center">Secure checkout · Instant PDF delivery · 18 pages</div>
+  </div>
+</div></section>
+<section><div class="inner">
+  <div class="sec-label">Questions</div>
+  <h2>Before you<br><span>decide</span></h2>
+  <div class="faq">
+    <div class="fq-item"><div class="fq-q">Do I need to show my face or reveal my identity?</div><div class="fq-a">No. The entire system is designed to work without personal disclosure. Faceless accounts with distinctive voices consistently outgrow personal brands in information-dense niches.</div></div>
+    <div class="fq-item"><div class="fq-q">I have zero followers right now. Does this work?</div><div class="fq-a">Yes. The strategies are designed specifically for zero-audience starting points. Reddit and Pinterest generate organic traffic without an existing following.</div></div>
+    <div class="fq-item"><div class="fq-q">How much time does this require each week?</div><div class="fq-a">Initial setup: one weekend. Ongoing: 30 minutes per week for oversight and adjustment. The automation system handles the rest.</div></div>
+    <div class="fq-item"><div class="fq-q">Is this just for AI income content?</div><div class="fq-a">The strategies work for any information or educational niche. The examples in the book use AI income as the illustration, but the hook formulas, platform strategies, and monetisation methods apply universally.</div></div>
+  </div>
+</div></section>
+<footer><div class="fl">Zaden James</div><div class="fc">© 2025 · The Faceless Content Playbook · All rights reserved</div></footer>
+<div class="stripe"></div>
+</body>
+</html>
