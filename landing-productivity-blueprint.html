@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Productivity Blueprint — Zaden James</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--dark:#0A0F0D;--forest:#1A3A2A;--orange:#E8682A;--white:#fff;--off:#F5F0EB;--grey:#777}
+  body{font-family:'Space Grotesk',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden}
+
+  /* FULL SCREEN HERO with large typography */
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:60px;position:relative;overflow:hidden;background:var(--dark)}
+  .hero-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:clamp(120px,20vw,280px);font-weight:800;color:rgba(232,104,42,0.04);white-space:nowrap;pointer-events:none;letter-spacing:-5px}
+  .hero-tag{display:inline-block;background:var(--orange);color:var(--dark);font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:8px 18px;margin-bottom:40px}
+  .hero h1{font-family:'Syne',sans-serif;font-size:clamp(56px,10vw,140px);font-weight:800;line-height:0.92;letter-spacing:-3px;margin-bottom:48px}
+  .hero h1 .line-orange{color:var(--orange)}
+  .hero-bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;align-items:end;border-top:1px solid rgba(255,255,255,0.1);padding-top:40px}
+  .hero-desc{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.8}
+  .hero-pages{text-align:center}
+  .hero-pages .big-num{font-family:'Syne',sans-serif;font-size:80px;font-weight:800;color:var(--orange);line-height:1}
+  .hero-pages .big-label{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+  .hero-cta{text-align:right}
+  .hero-price{font-family:'Syne',sans-serif;font-size:56px;font-weight:800;color:var(--white);line-height:1;margin-bottom:16px}
+  .hero-btn{display:inline-block;background:var(--orange);color:var(--dark);font-weight:700;font-size:14px;padding:16px 36px;text-decoration:none;text-transform:uppercase;letter-spacing:2px;transition:all 0.2s}
+  .hero-btn:hover{background:var(--white);transform:scale(1.02)}
+
+  /* MARQUEE STRIP */
+  .marquee-wrap{background:var(--orange);overflow:hidden;padding:14px 0}
+  .marquee-track{display:flex;gap:0;white-space:nowrap;animation:scroll 20s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .marquee-item{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--dark);letter-spacing:2px;text-transform:uppercase;padding:0 40px}
+  .marquee-item::after{content:'✦';margin-left:40px}
+
+  /* PROBLEM SECTION */
+  .problem{background:var(--off);padding:120px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .problem-left h2{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,72px);font-weight:800;color:var(--dark);line-height:1.0;letter-spacing:-2px}
+  .problem-left h2 span{color:var(--orange)}
+  .problem-right p{font-size:16px;color:var(--grey);line-height:1.9;margin-bottom:20px}
+  .problem-stat{display:flex;gap:24px;margin-top:40px}
+  .pstat{flex:1;padding:24px;background:var(--dark);border-radius:2px}
+  .pstat-num{font-family:'Syne',sans-serif;font-size:40px;font-weight:800;color:var(--orange)}
+  .pstat-txt{font-size:12px;color:rgba(255,255,255,0.5);margin-top:6px;line-height:1.5}
+
+  /* FEATURES - bold numbered list */
+  .features{background:var(--dark);padding:120px 60px}
+  .feat-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:80px;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:40px}
+  .feat-header h2{font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,60px);font-weight:800;letter-spacing:-2px}
+  .feat-header h2 span{color:var(--orange)}
+  .feat-header-right{font-size:13px;color:rgba(255,255,255,0.4);max-width:260px;line-height:1.7;text-align:right}
+  .feat-list{display:flex;flex-direction:column;gap:0}
+  .feat-row{display:grid;grid-template-columns:80px 1fr 1fr;gap:40px;padding:32px 0;border-bottom:1px solid rgba(255,255,255,0.06);align-items:start;transition:background 0.2s}
+  .feat-row:hover{background:rgba(255,255,255,0.02)}
+  .feat-num{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--orange);letter-spacing:2px}
+  .feat-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--white)}
+  .feat-desc{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7}
+
+  /* CHAPTERS - card grid on light bg */
+  .chapters{background:var(--off);padding:120px 60px}
+  .ch-header{margin-bottom:60px}
+  .ch-header h2{font-family:'Syne',sans-serif;font-size:clamp(32px,4vw,56px);font-weight:800;color:var(--dark);letter-spacing:-2px}
+  .ch-header p{font-size:15px;color:var(--grey);margin-top:12px}
+  .ch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+  .ch-card{background:var(--dark);padding:36px 28px;position:relative;overflow:hidden}
+  .ch-card::before{content:attr(data-num);position:absolute;right:-10px;top:-10px;font-family:'Syne',sans-serif;font-size:80px;font-weight:800;color:rgba(232,104,42,0.06);line-height:1}
+  .ch-card h4{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px}
+  .ch-card p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6}
+  .ch-tag{display:inline-block;background:var(--orange);color:var(--dark);font-size:10px;font-weight:700;padding:4px 10px;letter-spacing:1px;margin-bottom:16px}
+
+  /* CTA - dark full screen */
+  .cta{min-height:80vh;background:var(--forest);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden}
+  .cta::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;border:1px solid rgba(232,104,42,0.1);top:50%;left:50%;transform:translate(-50%,-50%)}
+  .cta h2{font-family:'Syne',sans-serif;font-size:clamp(40px,7vw,100px);font-weight:800;color:var(--white);letter-spacing:-3px;margin-bottom:24px;line-height:0.95}
+  .cta h2 span{color:var(--orange)}
+  .cta p{font-size:16px;color:rgba(255,255,255,0.5);margin-bottom:48px;max-width:500px}
+  .cta-price-big{font-family:'Syne',sans-serif;font-size:100px;font-weight:800;color:var(--orange);line-height:1;margin-bottom:8px}
+  .cta-note{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:40px;letter-spacing:1px}
+  .cta-btn-big{display:inline-block;background:var(--orange);color:var(--dark);font-family:'Syne',sans-serif;font-size:18px;font-weight:700;padding:22px 72px;text-decoration:none;text-transform:uppercase;letter-spacing:2px;transition:all 0.2s}
+  .cta-btn-big:hover{background:var(--white);transform:scale(1.03)}
+
+  footer{background:var(--dark);padding:32px;text-align:center;color:rgba(255,255,255,0.25);font-size:13px;border-top:1px solid rgba(255,255,255,0.06)}
+  footer a{color:var(--orange);text-decoration:none}
+
+  @media(max-width:768px){
+    .hero{padding:40px 24px}
+    .hero-bottom{grid-template-columns:1fr;gap:24px}
+    .hero-cta{text-align:left}
+    .problem{grid-template-columns:1fr;padding:60px 24px;gap:40px}
+    .features{padding:60px 24px}
+    .feat-row{grid-template-columns:1fr;gap:8px}
+    .ch-grid{grid-template-columns:1fr}
+    .chapters{padding:60px 24px}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg-text">PRODUCTIVITY</div>
+  <div class="hero-tag">Zaden James — Digital Guide</div>
+  <h1>THE<br>PRODUC<span class="line-orange">TIVITY</span><br>BLUEPRINT</h1>
+  <div class="hero-bottom">
+    <div class="hero-desc">Smarter goals. Better routines. Real results — without adding more hours to your day. 19 pages of proven systems built for serious entrepreneurs.</div>
+    <div class="hero-pages">
+      <div class="big-num">19</div>
+      <div class="big-label">Pages of Content</div>
+    </div>
+    <div class="hero-cta">
+      <div class="hero-price">$9.00</div>
+      <a href="https://zadenjames.gumroad.com" class="hero-btn">Get Instant Access →</a>
+    </div>
+  </div>
+</div>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">19 Pages</span>
+    <span class="marquee-item">13 Chapters</span>
+    <span class="marquee-item">Instant PDF</span>
+    <span class="marquee-item">Worksheets</span>
+    <span class="marquee-item">$9 One-Time</span>
+    <span class="marquee-item">30-Day Guarantee</span>
+    <span class="marquee-item">19 Pages</span>
+    <span class="marquee-item">13 Chapters</span>
+    <span class="marquee-item">Instant PDF</span>
+    <span class="marquee-item">Worksheets</span>
+    <span class="marquee-item">$9 One-Time</span>
+    <span class="marquee-item">30-Day Guarantee</span>
+  </div>
+</div>
+
+<div class="problem">
+  <div class="problem-left">
+    <h2>Busy is<br>NOT the<br>same as<br><span>productive.</span></h2>
+  </div>
+  <div class="problem-right">
+    <p>Most people fill their days with activity and end them feeling like they accomplished nothing. The problem is not time. It is clarity, priorities, and systems.</p>
+    <p>The Productivity Blueprint gives you a complete proven system to identify what truly matters, build routines that stick, and track your progress without burning out.</p>
+    <div class="problem-stat">
+      <div class="pstat"><div class="pstat-num">13</div><div class="pstat-txt">Chapters covering every dimension of productivity</div></div>
+      <div class="pstat"><div class="pstat-num">19</div><div class="pstat-txt">Pages of actionable frameworks and worksheets</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="features">
+  <div class="feat-header">
+    <h2>What is<br>inside the<br><span>blueprint</span></h2>
+    <div class="feat-header-right">Six core systems and seven bonus chapters — everything you need to transform how you work.</div>
+  </div>
+  <div class="feat-list">
+    <div class="feat-row"><div class="feat-num">01</div><div class="feat-title">Priority Frameworks</div><div class="feat-desc">The Eisenhower Matrix and One Thing exercise to identify and protect your most important work every single day.</div></div>
+    <div class="feat-row"><div class="feat-num">02</div><div class="feat-title">Routines That Stick</div><div class="feat-desc">The 3-part routine formula — morning power hour, midday reset, and evening shutdown ritual.</div></div>
+    <div class="feat-row"><div class="feat-num">03</div><div class="feat-title">Tools That Fit You</div><div class="feat-desc">A practical tool audit and curated list of free productivity tools matched to your working style.</div></div>
+    <div class="feat-row"><div class="feat-num">04</div><div class="feat-title">30-Day Reset Plan</div><div class="feat-desc">Week-by-week structure to audit, implement, optimise and master your new system in one month.</div></div>
+    <div class="feat-row"><div class="feat-num">05</div><div class="feat-title">Deep Work Strategy</div><div class="feat-desc">How to protect your peak cognitive hours for high-value work and batch all shallow work separately.</div></div>
+    <div class="feat-row"><div class="feat-num">06</div><div class="feat-title">Energy Management</div><div class="feat-desc">The four energy dimensions — physical, emotional, mental, purpose — and how to audit each one.</div></div>
+  </div>
+</div>
+
+<div class="chapters">
+  <div class="ch-header">
+    <h2>13 Chapters.<br>19 Pages.</h2>
+    <p>Every chapter builds on the last. Work through in order, complete the exercises, and you will have a complete productivity system by the final page.</p>
+  </div>
+  <div class="ch-grid">
+    <div class="ch-card" data-num="01"><div class="ch-tag">Chapter 01</div><h4>The Productivity Problem</h4><p>Why traditional advice fails and what actually works.</p></div>
+    <div class="ch-card" data-num="02"><div class="ch-tag">Chapter 02</div><h4>Clarify Your Priorities</h4><p>One Thing exercise and Eisenhower Matrix with worksheet.</p></div>
+    <div class="ch-card" data-num="03"><div class="ch-tag">Chapter 03</div><h4>Build Routines That Stick</h4><p>3-part routine formula and custom daily planner.</p></div>
+    <div class="ch-card" data-num="04"><div class="ch-tag">Chapter 04</div><h4>Choose Tools That Fit You</h4><p>Tool audit and curated free tool recommendations.</p></div>
+    <div class="ch-card" data-num="05"><div class="ch-tag">Chapter 05</div><h4>Track Without Burning Out</h4><p>Weekly review system and 4-week scoring tracker.</p></div>
+    <div class="ch-card" data-num="06"><div class="ch-tag">Chapter 06</div><h4>The 30-Day Reset</h4><p>Audit, implement, optimise, master — week by week.</p></div>
+    <div class="ch-card" data-num="07"><div class="ch-tag">Chapter 07</div><h4>Energy Management</h4><p>Four energy dimensions and how to improve each one.</p></div>
+    <div class="ch-card" data-num="08"><div class="ch-tag">Chapter 08</div><h4>Beat Procrastination</h4><p>5 types of procrastination and the fix for each one.</p></div>
+    <div class="ch-card" data-num="09"><div class="ch-tag">Chapter 09</div><h4>Saying No Strategically</h4><p>Scripts to decline without damaging relationships.</p></div>
+    <div class="ch-card" data-num="10"><div class="ch-tag">Chapter 10</div><h4>Deep vs Shallow Work</h4><p>Protect your peak hours for the work that matters most.</p></div>
+    <div class="ch-card" data-num="11"><div class="ch-tag">Chapter 11</div><h4>The Art of Single-Tasking</h4><p>The real cost of task switching and how to focus.</p></div>
+    <div class="ch-card" data-num="12"><div class="ch-tag">Chapter 12</div><h4>Your Ideal Week</h4><p>Design your week with the full 7-day template.</p></div>
+    <div class="ch-card" data-num="13"><div class="ch-tag">Chapter 13</div><h4>Recovering From Bad Days</h4><p>Why bad days happen and how to bounce back fast.</p></div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>WORK<br><span>SMARTER.</span><br>EARN MORE.</h2>
+  <p>19 pages of proven systems for serious entrepreneurs. One payment. Instant access.</p>
+  <div class="cta-price-big">$9.00</div>
+  <div class="cta-note">ONE-TIME · INSTANT PDF · 30-DAY GUARANTEE</div>
+  <a href="https://zadenjames.gumroad.com" class="cta-btn-big">Download Now</a>
+</div>
+
+<footer><p>© 2025 Zaden James Digital · <a href="#">Privacy Policy</a> · Delivered instantly via Gumroad</p></footer>
+</body>
+</html>
