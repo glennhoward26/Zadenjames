@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 AI Prompts That Actually Work — Zaden James</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--cream:#FAF6F0;--cream2:#F5EDE0;--sand:#EDE0CE;--warm:#FDF9F4;--burgundy:#6B1A2A;--burgundy2:#8B2A3E;--wine:#4A0F1C;--blush:#F5E6E8;--blush2:#EDD5D8;--caramel:#C4956A;--caramel2:#D4A574;--text:#2A1A1F;--muted:#8A7070;--border:rgba(107,26,42,0.12);--border2:rgba(196,149,106,0.25)}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.6}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+nav{background:var(--wine);padding:.9rem 3rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(74,15,28,.3)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--cream)}
+.nav-logo span{color:var(--caramel)}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.nav-tag{font-family:'Fira Code',monospace;font-size:13px;color:var(--caramel);letter-spacing:.08em}
+.nav-cta{font-family:'Outfit',sans-serif;font-size:12px;font-weight:600;background:var(--caramel);color:var(--wine);padding:8px 20px;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:var(--caramel2);transform:translateY(-1px)}
+.hero{background:linear-gradient(135deg,var(--wine) 0%,var(--burgundy) 60%,var(--burgundy2) 100%);min-height:92vh;display:grid;grid-template-columns:1.1fr .9fr;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(196,149,106,.08),transparent 50%),radial-gradient(circle at 80% 20%,rgba(250,246,240,.05),transparent 40%);pointer-events:none}
+.hero-left{padding:5rem 3rem 4rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;border-right:1px solid rgba(196,149,106,.15)}
+.hero-right{padding:4rem 3rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.hero-kicker{font-family:'Fira Code',monospace;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--caramel);margin-bottom:2rem;display:flex;align-items:center;gap:12px;animation:slideRight .8s ease .2s both}
+.hero-kicker::before{content:'';width:36px;height:1px;background:var(--caramel)}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,8vw,7.5rem);font-weight:700;line-height:.88;letter-spacing:-.02em;margin-bottom:2rem;animation:fadeUp .9s ease .3s both}
+h1 .num{color:var(--caramel);font-style:italic}
+h1 .word-pre{color:rgba(250,246,240,.35);font-weight:400;display:block;font-size:.5em;letter-spacing:.1em;font-family:'Fira Code',monospace;margin-bottom:.3rem}
+h1 .word-ai{color:var(--cream);display:block}
+h1 .word-prompts{color:var(--cream);display:block}
+h1 .word-that{color:rgba(250,246,240,.4);font-weight:400;font-size:.42em;display:block;font-family:'Outfit',sans-serif;letter-spacing:.04em;margin-top:.4rem;padding-left:2.5rem}
+.hero-desc{font-size:1rem;color:rgba(250,246,240,.55);line-height:1.85;font-weight:300;max-width:460px;margin-bottom:3rem;animation:fadeUp .9s ease .5s both}
+.hero-desc strong{color:var(--cream);font-weight:500}
+.hero-cta-group{display:flex;flex-direction:column;gap:1rem;animation:fadeUp .9s ease .6s both}
+.btn-main{display:inline-flex;align-items:center;justify-content:space-between;gap:1rem;background:var(--caramel);color:var(--wine);font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;padding:1.1rem 2rem;text-decoration:none;transition:all .3s;letter-spacing:.02em;max-width:380px;position:relative;overflow:hidden}
+.btn-main::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .5s}
+.btn-main:hover::before{transform:translateX(100%)}
+.btn-main:hover{background:var(--caramel2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(196,149,106,.35)}
+.hero-note{font-family:'Fira Code',monospace;font-size:13px;color:rgba(250,246,240,.5);letter-spacing:.1em}
+.preview-label{font-family:'Fira Code',monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--caramel);margin-bottom:1.2rem;opacity:.7;animation:fadeIn 1s ease 1s both}
+.prompt-stack{position:relative;height:520px}
+.f-card{position:absolute;background:rgba(250,246,240,.07);border:1px solid rgba(196,149,106,.2);backdrop-filter:blur(8px);padding:1.4rem 1.6rem;width:88%;transition:all .3s}
+.f-card:hover{background:rgba(250,246,240,.12);border-color:rgba(196,149,106,.4)}
+.fc1{top:0;left:0;animation:fadeUp .8s ease .7s both,float 6s ease-in-out 1.5s infinite}
+.fc2{top:165px;left:5%;animation:fadeUp .8s ease .9s both,float 6s ease-in-out 2s infinite}
+.fc3{top:325px;left:2%;animation:fadeUp .8s ease 1.1s both,float 6s ease-in-out 2.5s infinite}
+.fc-num{font-family:'Fira Code',monospace;font-size:12px;color:var(--caramel);letter-spacing:.15em;margin-bottom:.3rem}
+.fc-cat{font-family:'Fira Code',monospace;font-size:11px;color:rgba(196,149,106,.5);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem}
+.fc-title{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:.4rem;line-height:1.3}
+.fc-body{font-size:13px;color:rgba(250,246,240,.45);line-height:1.6;font-weight:300}
+.ticker-wrap{background:var(--burgundy);overflow:hidden;border-top:1px solid rgba(196,149,106,.2);border-bottom:1px solid rgba(196,149,106,.2);padding:.65rem 0}
+.ticker-track{display:flex;animation:scrollL 30s linear infinite;white-space:nowrap}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{font-family:'Fira Code',monospace;font-size:13px;color:var(--caramel);letter-spacing:.15em;padding:0 2.5rem;flex-shrink:0}
+.ticker-item::before{content:'◆  ';opacity:.5}
+@keyframes scrollL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.stats-bar{background:var(--cream2);border-bottom:1px solid var(--border)}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.stat-cell{padding:2.2rem 1.5rem;text-align:center;border-right:1px solid var(--border);transition:background .2s;position:relative}
+.stat-cell:last-child{border:none}
+.stat-cell:hover{background:var(--blush)}
+.stat-cell::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--burgundy);transition:width .3s}
+.stat-cell:hover::after{width:100%}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:700;color:var(--burgundy);display:block;line-height:1}
+.stat-lbl{font-family:'Fira Code',monospace;font-size:12px;color:var(--muted);letter-spacing:.18em;text-transform:uppercase;margin-top:5px;display:block}
+.scroll-section{padding:5rem 0;background:var(--warm);border-top:1px solid var(--border);overflow:hidden}
+.scroll-header{max-width:1100px;margin:0 auto;padding:0 3rem 3rem}
+.section-kicker{font-family:'Fira Code',monospace;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--caramel);margin-bottom:.5rem}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.5rem);font-weight:700;line-height:1.1;color:var(--burgundy);letter-spacing:-.01em}
+h2 em{color:var(--caramel);font-style:italic}
+.sec-sub{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:480px;margin-top:.75rem}
+.scroll-row{display:flex;gap:1rem;padding:.5rem 0;margin-bottom:1rem}
+.row-left{animation:scrollLeft 35s linear infinite}
+.row-right{animation:scrollRight 40s linear infinite}
+.scroll-row:hover{animation-play-state:paused}
+@keyframes scrollLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes scrollRight{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.s-card{flex-shrink:0;width:300px;background:var(--cream);border:1px solid var(--border2);padding:1.4rem;transition:all .25s;cursor:default}
+.s-card:hover{border-color:var(--burgundy);transform:translateY(-3px);box-shadow:0 8px 24px rgba(107,26,42,.1)}
+.sc-num{font-family:'Fira Code',monospace;font-size:12px;color:var(--caramel);letter-spacing:.15em;margin-bottom:.3rem}
+.sc-cat{font-family:'Fira Code',monospace;font-size:11px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem}
+.sc-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--burgundy);margin-bottom:.4rem;line-height:1.3}
+.sc-body{font-size:13px;color:var(--muted);line-height:1.65;font-weight:300}
+.cats-section{max-width:1100px;margin:0 auto;padding:5rem 3rem}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:2.5rem}
+.cat-item{background:var(--cream);padding:1.4rem 1.8rem;display:grid;grid-template-columns:52px 1fr auto;gap:1rem;align-items:center;transition:all .2s;border-left:3px solid transparent;cursor:default}
+.cat-item:hover{background:var(--blush);border-left-color:var(--burgundy)}
+.cn{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--border2);transition:color .2s;line-height:1}
+.cat-item:hover .cn{color:var(--burgundy)}
+.cat-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:2px}
+.cat-desc{font-size:13px;color:var(--muted);font-weight:300;line-height:1.5}
+.cat-badge{font-family:'Fira Code',monospace;font-size:11px;color:var(--burgundy);background:var(--blush);border:1px solid var(--border2);padding:4px 10px;white-space:nowrap;transition:all .2s}
+.cat-item:hover .cat-badge{background:var(--burgundy);color:var(--cream)}
+.big-feat{background:var(--blush);border-top:1px solid var(--border2);border-bottom:1px solid var(--border2);padding:3rem;text-align:center;position:relative;overflow:hidden}
+.big-feat::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(107,26,42,.04),transparent 60%);pointer-events:none}
+.big-num{font-family:'Cormorant Garamond',serif;font-size:8rem;font-weight:700;color:var(--burgundy);line-height:1;display:inline-block;animation:pulse 3s ease-in-out infinite}
+.bf-lbl{font-family:'Fira Code',monospace;font-size:13px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-top:.5rem}
+.bf-sub{font-size:1.1rem;color:var(--burgundy);font-weight:300;margin-top:.5rem}
+.why-sec{background:var(--burgundy);border-top:1px solid rgba(196,149,106,.2)}
+.why-inner{max-width:1100px;margin:0 auto;padding:5.5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.why-left .section-kicker{color:var(--caramel2)}
+.why-left h2{color:var(--cream);margin-bottom:1.5rem}
+.why-left p{font-size:.95rem;color:rgba(250,246,240,.55);line-height:1.82;font-weight:300;margin-bottom:1rem}
+.why-left p strong{color:var(--cream);font-weight:500}
+.why-cards{display:flex;flex-direction:column;gap:.75rem}
+.w-card{background:rgba(250,246,240,.05);border-left:3px solid var(--caramel);padding:1.2rem 1.5rem;transition:all .25s}
+.w-card:hover{background:rgba(250,246,240,.09);transform:translateX(4px)}
+.wc-lbl{font-family:'Fira Code',monospace;font-size:12px;color:var(--caramel2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem}
+.wc-title{font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:600;color:var(--cream);margin-bottom:.3rem}
+.wc-body{font-size:13px;color:rgba(250,246,240,.5);line-height:1.65;font-weight:300}
+.testi-sec{max-width:1100px;margin:0 auto;padding:5rem 3rem}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem}
+.t-card{background:var(--cream2);border:1px solid var(--border2);padding:2rem;position:relative;transition:all .25s}
+.t-card:hover{border-color:var(--burgundy);transform:translateY(-3px);box-shadow:0 8px 24px rgba(107,26,42,.08)}
+.t-card::before{content:'❝';font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--blush2);position:absolute;top:-.5rem;left:1.5rem;line-height:1}
+.t-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--text);line-height:1.75;font-style:italic;margin-bottom:.8rem;padding-top:.75rem}
+.t-author{font-family:'Fira Code',monospace;font-size:12px;color:var(--caramel);letter-spacing:.12em;text-transform:uppercase}
+.price-sec{background:var(--cream2);border-top:1px solid var(--border)}
+.price-inner{max-width:1100px;margin:0 auto;padding:5rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.price-left p{font-size:.95rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:1.5rem;margin-top:1rem}
+.inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.45rem}
+.inc-i{display:flex;align-items:flex-start;gap:8px;font-size:14px;color:var(--muted);font-weight:300}
+.inc-i::before{content:'◆';color:var(--caramel);font-size:8px;flex-shrink:0;margin-top:3px}
+.p-card{background:var(--cream);border:1px solid var(--border2);padding:3rem;position:relative;overflow:hidden;box-shadow:0 4px 40px rgba(107,26,42,.08)}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--burgundy),var(--caramel),var(--burgundy2))}
+.p-edition{font-family:'Fira Code',monospace;font-size:12px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.p-was{font-family:'Fira Code',monospace;font-size:13px;color:var(--muted);text-decoration:line-through;margin-bottom:.1rem}
+.p-price{font-family:'Cormorant Garamond',serif;font-size:7.5rem;font-weight:700;color:var(--burgundy);line-height:1;margin-bottom:.2rem}
+.p-terms{font-family:'Fira Code',monospace;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2rem}
+.btn-buy{display:flex;align-items:center;justify-content:space-between;width:100%;background:var(--burgundy);color:var(--cream);font-family:'Outfit',sans-serif;font-weight:700;font-size:15px;padding:1.1rem 1.8rem;text-decoration:none;transition:all .25s;letter-spacing:.02em;margin-bottom:.75rem;position:relative;overflow:hidden}
+.btn-buy::after{content:'';position:absolute;inset:0;background:var(--burgundy2);transform:translateX(-100%);transition:transform .3s}
+.btn-buy:hover::after{transform:translateX(0)}
+.btn-buy span{position:relative;z-index:1}
+.btn-buy:hover{box-shadow:0 6px 24px rgba(107,26,42,.3)}
+.p-foot{font-family:'Fira Code',monospace;font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+.faq-sec{max-width:1100px;margin:0 auto;padding:5rem 3rem}
+.faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 4rem;margin-top:2.5rem}
+.faq-item{padding:1.4rem 0;border-bottom:1px solid var(--border)}
+.faq-item:first-child,.faq-item:nth-child(2){border-top:1px solid var(--border)}
+.faq-q{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:700;color:var(--burgundy);margin-bottom:.5rem;line-height:1.3;display:flex;gap:10px;align-items:flex-start}
+.faq-q::before{content:'◆';font-size:8px;color:var(--caramel);flex-shrink:0;margin-top:5px}
+.faq-a{font-size:14px;color:var(--muted);line-height:1.78;font-weight:300;padding-left:1.2rem}
+.final{background:linear-gradient(135deg,var(--wine),var(--burgundy));text-align:center;padding:7rem 3rem;position:relative;overflow:hidden}
+.final::before{content:'50';font-family:'Cormorant Garamond',serif;font-size:28vw;font-weight:700;color:rgba(250,246,240,.03);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;line-height:1}
+.final-kicker{font-family:'Fira Code',monospace;font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--caramel);margin-bottom:1.5rem}
+.final-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:700;color:var(--cream);line-height:1.05;margin-bottom:1.2rem}
+.final-h em{color:var(--caramel);font-style:italic}
+.final-sub{font-size:.95rem;color:rgba(250,246,240,.45);max-width:380px;margin:0 auto 2.5rem;font-weight:300;line-height:1.78}
+.final-note{margin-top:.75rem;font-family:'Fira Code',monospace;font-size:13px;color:rgba(196,149,106,.65);letter-spacing:.12em;text-transform:uppercase}
+footer{background:var(--wine);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(196,149,106,.15)}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;color:var(--cream)}
+.foot-logo span{color:var(--caramel)}
+.foot-copy{font-family:'Fira Code',monospace;font-size:12px;color:rgba(196,149,106,.55);letter-spacing:.08em}
+.caramel-bar{height:3px;background:linear-gradient(90deg,var(--burgundy),var(--caramel),var(--caramel2),var(--caramel),var(--burgundy))}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-right{display:none}.why-inner,.price-inner,.testi-grid,.faq-cols,.cat-grid{grid-template-columns:1fr}.stats-inner{grid-template-columns:repeat(3,1fr)}.stat-cell:nth-child(n+4){border-top:1px solid var(--border)}footer{flex-direction:column;gap:1rem;text-align:center}}
+@media(max-width:600px){nav{padding:1rem 1.5rem}.hero-left{padding:3rem 1.2rem 2rem}.cats-section,.why-inner,.price-inner,.testi-sec,.faq-sec{padding:1.8rem 1.2rem!important}.scroll-header{padding:0 1.2rem 1.5rem}h1{font-size:3rem}.inc-grid{grid-template-columns:1fr}h2{font-size:1.8rem!important}.stat-cell{padding:1.2rem!important}.big-feat{padding:2rem 1.2rem!important}.final-cta{padding:3.5rem 1.2rem!important}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Zaden <span>James</span></div>
+  <div class="nav-right">
+    <div class="nav-tag">$17 · 50 PROMPTS · 24 PAGES</div>
+    <a href="https://zadenjames.gumroad.com/l/wzfnkg" class="nav-cta" target="_blank">Get All 50 →</a>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-left">
+    <div class="hero-kicker">The AI Productivity Collection</div>
+    <h1>
+      <span class="word-pre">// 50 TESTED · DOCUMENTED · READY</span>
+      <span class="num">50</span>
+      <span class="word-ai">AI Prompts</span>
+      <span class="word-prompts">That Work.</span>
+      <span class="word-that">Not the generic ones. The real ones.</span>
+    </h1>
+    <p class="hero-desc"><strong>Not recycled Twitter threads.</strong> Not vague one-liners. 50 prompts tested across ChatGPT, Claude, and Gemini — built with the five-component architecture that produces <strong>usable output on the first run, every time.</strong></p>
+    <div class="hero-cta-group">
+      <a href="https://zadenjames.gumroad.com/l/wzfnkg" class="btn-main" target="_blank">
+        <span>Get All 50 Prompts — $17</span><span style="font-size:20px">→</span>
+      </a>
+      <div class="hero-note">// secure_checkout · instant_pdf · 24_pages · no_subscription</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="preview-label">// Preview — 3 of 50 prompts</div>
+    <div class="prompt-stack">
+      <div class="f-card fc1">
+        <div class="fc-num">PROMPT 01</div><div class="fc-cat">Content Creation</div>
+        <div class="fc-title">The Viral Hook Generator</div>
+        <div class="fc-body">10 hooks using 10 different archetypes — specific number, counterintuitive, honest admission, knowledge gap, direct challenge and 5 more. One prompt. Ten tested options ready to deploy.</div>
+      </div>
+      <div class="f-card fc2">
+        <div class="fc-num">PROMPT 17</div><div class="fc-cat">Research & Analysis</div>
+        <div class="fc-title">The Audience Psychology Map</div>
+        <div class="fc-body">Maps complete buyer psychology across 7 dimensions — including the exact words your audience uses. The copy language that makes customers feel immediately understood.</div>
+      </div>
+      <div class="f-card fc3">
+        <div class="fc-num">PROMPT 36</div><div class="fc-cat">AI Automation</div>
+        <div class="fc-title">The Content Repurposing Engine</div>
+        <div class="fc-body">1 piece of content → a full week across 4 platforms. Twitter thread, LinkedIn post, Reddit story, 3 Pinterest pins, email section. One prompt run.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">50 Tested Prompts</span><span class="ticker-item">Content Creation</span><span class="ticker-item">Business Strategy</span><span class="ticker-item">Copywriting</span><span class="ticker-item">Research & Analysis</span><span class="ticker-item">Productivity Systems</span><span class="ticker-item">Income Generation</span><span class="ticker-item">Audience Building</span><span class="ticker-item">AI Automation</span><span class="ticker-item">Personal Brand</span><span class="ticker-item">Problem Solving</span><span class="ticker-item">3 Chaining Guides</span><span class="ticker-item">Works on ChatGPT · Claude · Gemini</span><span class="ticker-item">Five-Component Framework</span>
+    <span class="ticker-item">50 Tested Prompts</span><span class="ticker-item">Content Creation</span><span class="ticker-item">Business Strategy</span><span class="ticker-item">Copywriting</span><span class="ticker-item">Research & Analysis</span><span class="ticker-item">Productivity Systems</span><span class="ticker-item">Income Generation</span><span class="ticker-item">Audience Building</span><span class="ticker-item">AI Automation</span><span class="ticker-item">Personal Brand</span><span class="ticker-item">Problem Solving</span><span class="ticker-item">3 Chaining Guides</span><span class="ticker-item">Works on ChatGPT · Claude · Gemini</span><span class="ticker-item">Five-Component Framework</span>
+  </div>
+</div>
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-cell reveal"><span class="stat-num">50</span><span class="stat-lbl">Total Prompts</span></div>
+    <div class="stat-cell reveal reveal-d1"><span class="stat-num">10</span><span class="stat-lbl">Categories</span></div>
+    <div class="stat-cell reveal reveal-d2"><span class="stat-num">3</span><span class="stat-lbl">AI Models Tested</span></div>
+    <div class="stat-cell reveal reveal-d3"><span class="stat-num">5</span><span class="stat-lbl">Component Framework</span></div>
+    <div class="stat-cell reveal reveal-d4"><span class="stat-num">24</span><span class="stat-lbl">Pages</span></div>
+  </div>
+</div>
+<section class="scroll-section">
+  <div class="scroll-header reveal">
+    <div class="section-kicker">// Inside the collection — hover to pause</div>
+    <h2>50 prompts. <em>All of them work.</em></h2>
+    <p class="sec-sub">Real prompts from the collection scrolling live. Both rows pause on hover. Every card is a prompt you get access to today.</p>
+  </div>
+  <div class="scroll-row row-left">
+    <div class="s-card"><div class="sc-num">PROMPT 01</div><div class="sc-cat">Content Creation</div><div class="sc-title">The Viral Hook Generator</div><div class="sc-body">10 hooks using 10 archetypes in one run — specific number, counterintuitive, honest admission, result, knowledge gap, challenge, behind-the-scenes, myth-buster, timeline, identity.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 06</div><div class="sc-cat">Business Strategy</div><div class="sc-title">Business Model Stress Test</div><div class="sc-body">Devil's advocate analysis — every failure mode, every risky assumption, every competitive threat identified before you spend a day building anything.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 11</div><div class="sc-cat">Copywriting</div><div class="sc-title">The Sales Page Writer</div><div class="sc-body">Complete sales page: outcome headline, problem escalation, solution reveal, 8-item benefits list, 2 testimonials in different voices, price anchor, 3 closing CTAs.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 17</div><div class="sc-cat">Research</div><div class="sc-title">Audience Psychology Map</div><div class="sc-body">Maps buyer psychology across 7 dimensions including the exact words your audience uses — the copy language that makes them feel immediately understood.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 21</div><div class="sc-cat">Productivity</div><div class="sc-title">The Ideal Week Architect</div><div class="sc-body">Complete Mon-Sun schedule separating maker time from manager time, batching tasks by type, and protecting peak energy hours for the work that actually matters.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 26</div><div class="sc-cat">Income</div><div class="sc-title">The Monetisation Map</div><div class="sc-body">6 income streams ranked by speed to first dollar, passive potential, and alignment with your existing skills — with the single most important action to start each one this week.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 01</div><div class="sc-cat">Content Creation</div><div class="sc-title">The Viral Hook Generator</div><div class="sc-body">10 hooks using 10 archetypes in one run — specific number, counterintuitive, honest admission, result, knowledge gap, challenge, behind-the-scenes, myth-buster, timeline, identity.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 06</div><div class="sc-cat">Business Strategy</div><div class="sc-title">Business Model Stress Test</div><div class="sc-body">Devil's advocate analysis — every failure mode, every risky assumption, every competitive threat identified before you spend a day building anything.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 11</div><div class="sc-cat">Copywriting</div><div class="sc-title">The Sales Page Writer</div><div class="sc-body">Complete sales page: outcome headline, problem escalation, solution reveal, 8-item benefits list, 2 testimonials, price anchor, 3 closing CTAs.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 17</div><div class="sc-cat">Research</div><div class="sc-title">Audience Psychology Map</div><div class="sc-body">Maps buyer psychology across 7 dimensions including exact language — the copy gold that makes customers feel immediately understood.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 21</div><div class="sc-cat">Productivity</div><div class="sc-title">The Ideal Week Architect</div><div class="sc-body">Complete schedule separating maker time from manager time, batching similar tasks, protecting peak energy hours.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 26</div><div class="sc-cat">Income</div><div class="sc-title">The Monetisation Map</div><div class="sc-body">6 income streams ranked by speed to first dollar, passive potential, and alignment with your existing skills.</div></div>
+  </div>
+  <div class="scroll-row row-right">
+    <div class="s-card"><div class="sc-num">PROMPT 31</div><div class="sc-cat">Audience Building</div><div class="sc-title">Growth Strategy Selector</div><div class="sc-body">The single best growth strategy for your specific constraints — with exact content cadence, weekly tracking metric, and what failure looks like at 30 days.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 36</div><div class="sc-cat">AI Automation</div><div class="sc-title">Content Repurposing Engine</div><div class="sc-body">1 piece of content → full week of posts. Twitter thread, LinkedIn post, Reddit story, 3 Pinterest pins, email section, 5 standalone quotes. One prompt run.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 37</div><div class="sc-cat">AI Automation</div><div class="sc-title">The Prompt Chain Designer</div><div class="sc-body">Design a 4-6 step prompt chain where each output feeds the next — producing complex outputs no single prompt could create alone.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 41</div><div class="sc-cat">Personal Brand</div><div class="sc-title">Positioning Statement Builder</div><div class="sc-body">5 positioning statements that differentiate you from generic experts, attract the right audience, and repel the wrong one — all under 25 words.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 46</div><div class="sc-cat">Problem Solving</div><div class="sc-title">The Root Cause Excavator</div><div class="sc-body">5 Whys methodology to find the actual cause of recurring problems — not symptoms. Identifies skill gap, system gap, mindset issue, or environmental constraint.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 50</div><div class="sc-cat">Problem Solving</div><div class="sc-title">The Clarity Generator</div><div class="sc-body">Socratic dialogue producing clarity through structured questioning. 5 questions, one at a time. The synthesis at the end is the deliverable.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 31</div><div class="sc-cat">Audience Building</div><div class="sc-title">Growth Strategy Selector</div><div class="sc-body">The single best growth strategy for your specific constraints — exact cadence, weekly metric, and failure definition at 30 days.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 36</div><div class="sc-cat">AI Automation</div><div class="sc-title">Content Repurposing Engine</div><div class="sc-body">1 piece → full week across 4 platforms. Twitter thread, LinkedIn, Reddit story, 3 Pinterest pins, email section, 5 quotes.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 37</div><div class="sc-cat">AI Automation</div><div class="sc-title">The Prompt Chain Designer</div><div class="sc-body">4-6 step prompt chain where each output feeds the next — for complex outputs no single prompt produces alone.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 41</div><div class="sc-cat">Personal Brand</div><div class="sc-title">Positioning Statement Builder</div><div class="sc-body">5 positioning statements differentiating you from generic experts and attracting exactly the right audience.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 46</div><div class="sc-cat">Problem Solving</div><div class="sc-title">The Root Cause Excavator</div><div class="sc-body">5 Whys to find the actual cause — not symptoms. Identifies skill gap, system gap, mindset issue, or environmental constraint.</div></div>
+    <div class="s-card"><div class="sc-num">PROMPT 50</div><div class="sc-cat">Problem Solving</div><div class="sc-title">The Clarity Generator</div><div class="sc-body">Socratic dialogue through 5 structured questions. The synthesis at the end is your deliverable.</div></div>
+  </div>
+</section>
+<section class="testi-sec">
+  <div class="reveal"><div class="section-kicker">// Early readers</div><h2>What they <em>actually said</em></h2></div>
+  <div class="testi-grid">
+    <div class="t-card reveal"><div class="t-text">"The Sales Page Writer prompt produced a complete 600-word page in one run. I edited three sentences. That would have taken me three hours to write myself — and the AI version converted better."</div><div class="t-author">// early reader · digital product creator</div></div>
+    <div class="t-card reveal reveal-d2"><div class="t-text">"Prompt 36 — the Content Repurposing Engine — is the one I use every week. I write one piece, run the prompt, and I have a full week of content across four platforms. The time saving alone is worth 10x the price."</div><div class="t-author">// early reader · content creator · LinkedIn</div></div>
+  </div>
+</section>
+<div class="price-sec">
+  <div class="price-inner">
+    <div class="price-left reveal"><div class="section-kicker">// Your investment</div><h2>Everything in the <em>collection</em></h2><p>50 prompts, 10 categories, the five-component framework, and three complete chaining workflows. Everything needed to make AI produce output you can actually use — today.</p>
+      <div class="inc-grid">
+        <div class="inc-i">50 tested, documented prompts</div><div class="inc-i">10 categories — full coverage</div>
+        <div class="inc-i">Five-component framework guide</div><div class="inc-i">3 chaining workflow guides</div>
+        <div class="inc-i">Content Creation × 5</div><div class="inc-i">Business Strategy × 5</div>
+        <div class="inc-i">Copywriting × 5</div><div class="inc-i">Research & Analysis × 5</div>
+        <div class="inc-i">Productivity × 5</div><div class="inc-i">Income Generation × 5</div>
+        <div class="inc-i">Audience Building × 5</div><div class="inc-i">AI Automation × 5</div>
+        <div class="inc-i">Personal Brand × 5</div><div class="inc-i">Problem Solving × 5</div>
+        <div class="inc-i">ChatGPT, Claude & Gemini</div><div class="inc-i">24 pages · PDF · instant</div>
+      </div>
+    </div>
+    <div class="p-card reveal reveal-d2">
+      <div class="p-edition">50 AI Prompts That Actually Work — Zaden James</div>
+      <div class="p-was">// valued at $67+</div>
+      <div class="p-price">$17</div>
+      <div class="p-terms">One-time · No subscription · Yours forever</div>
+      <a href="https://zadenjames.gumroad.com/l/wzfnkg" class="btn-buy" target="_blank"><span>Get All 50 Prompts — $17 →</span></a>
+      <div class="p-foot">Secure checkout · PDF instant · 24 pages</div>
+    </div>
+  </div>
+</div>
+<section class="faq-sec">
+  <div class="reveal"><div class="section-kicker">// Common questions</div><h2>Before you <em>decide</em></h2></div>
+  <div class="faq-cols">
+    <div>
+      <div class="faq-item reveal"><div class="faq-q">Which AI models do these work with?</div><div class="faq-a">All 50 were tested on ChatGPT-4, Claude, and Gemini. All work on all three. GPT-4 and Claude tend to produce the strongest results on copywriting prompts specifically.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Are these ready to use immediately?</div><div class="faq-a">Each prompt contains [BRACKETED VARIABLES] you replace with your specific content — your niche, audience, product. Everything else is ready to paste and run. Most prompts take under 2 minutes to prepare.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">I'm not technical — can I use these?</div><div class="faq-a">Yes. Open ChatGPT (or Claude, or Gemini), paste the prompt, replace the bracketed variables, press enter. No technical knowledge required. The Introduction explains exactly how in 3 minutes.</div></div>
+    </div>
+    <div>
+      <div class="faq-item reveal"><div class="faq-q">What makes these different from free prompt lists?</div><div class="faq-a">Free lists are one-liners. Every prompt here uses the five-component architecture: Role, Context, Task, Constraints, and Output Format. The output quality difference is categorical, not marginal.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Will these become outdated as AI models update?</div><div class="faq-a">The five-component architecture is model-agnostic — it works because it gives the AI what it needs regardless of model. As models improve, the same prompts produce better output, not worse.</div></div>
+      <div class="faq-item reveal"><div class="faq-q">Can I use the outputs commercially?</div><div class="faq-a">Yes. The outputs are yours for any commercial purpose — content, sales copy, products, client work, anything else. No restrictions on what you do with what the prompts produce.</div></div>
+    </div>
+  </div>
+</section>
+<div class="final">
+  <div class="final-kicker">// The decision</div>
+  <div class="final-h">Stop prompting badly.<br><em>Start getting results.</em></div>
+  <p class="final-sub">50 prompts. All tested. All usable on the first run. $17 and yours in the next 60 seconds.</p>
+  <a href="https://zadenjames.gumroad.com/l/wzfnkg" class="btn-main" target="_blank" style="margin:0 auto;max-width:400px"><span>Get All 50 Prompts — $17</span><span style="font-size:20px">→</span></a>
+  <div class="final-note">// INSTANT · PDF · $17 ONE-TIME · 24 PAGES · ZADEN JAMES</div>
+</div>
+<div class="caramel-bar"></div>
+<footer>
+  <div class="foot-logo">Zaden <span>James</span></div>
+  <div class="foot-copy">© 2025 · 50 AI Prompts That Actually Work · All rights reserved</div>
+</footer>
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
