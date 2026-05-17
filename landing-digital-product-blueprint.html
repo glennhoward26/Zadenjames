@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Digital Product Blueprint — Zaden James</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#060B18;
+  --navy2:#0A1228;
+  --navy3:#0F1A35;
+  --navy4:#162040;
+  --orange:#FF6B00;
+  --orange2:#FF8C2A;
+  --orange3:#FFB060;
+  --orange-glow:rgba(255,107,0,0.15);
+  --warm:#FFF8F0;
+  --silver:#B0BAD0;
+  --muted:#4A5568;
+  --border:rgba(255,107,0,0.15);
+  --border2:rgba(255,255,255,0.06);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--navy);color:var(--warm);overflow-x:hidden}
+
+/* CANVAS */
+#cv{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.6}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(255,107,0,0.1)}50%{box-shadow:0 0 50px rgba(255,107,0,0.35),0 0 100px rgba(255,107,0,0.1)}}
+@keyframes blob{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}50%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}}
+@keyframes scanline{0%{top:-2px}100%{top:100vh}}
+@keyframes trackL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes trackR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:translateY(0)}
+.rl{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease}
+.rl.on{opacity:1;transform:translateX(0)}
+.rr{opacity:0;transform:translateX(30px);transition:opacity .7s ease,transform .7s ease}
+.rr.on{opacity:1;transform:translateX(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* SCANLINE */
+.scan{position:fixed;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,107,0,0.05),transparent);animation:scanline 12s linear infinite;pointer-events:none;z-index:9998}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:.9rem 2rem;display:flex;justify-content:space-between;align-items:center;transition:all .3s}
+nav.scrolled{background:rgba(6,11,24,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:800;color:var(--warm);letter-spacing:-.01em}
+.nav-logo em{color:var(--orange);font-style:normal}
+.nav-right{display:flex;align-items:center;gap:1rem;position:relative;z-index:1}
+.nav-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);letter-spacing:.1em}
+.nav-btn{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;background:var(--orange);color:var(--navy);padding:8px 18px;text-decoration:none;border-radius:3px;transition:all .2s}
+.nav-btn:hover{background:var(--orange2);transform:translateY(-2px);box-shadow:0 4px 20px rgba(255,107,0,0.4)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 2rem 4rem;position:relative;z-index:1;overflow:hidden}
+.hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;width:100%}
+.hero-slash{position:absolute;right:0;top:0;width:45%;height:100%;background:linear-gradient(135deg,transparent 40%,rgba(255,107,0,0.03));pointer-events:none}
+.hero-slash::after{content:'';position:absolute;right:0;top:0;width:1px;height:100%;background:linear-gradient(180deg,transparent,var(--orange),transparent)}
+
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--orange);margin-bottom:1.5rem;display:flex;align-items:center;gap:12px;animation:fadeIn .8s ease .2s both}
+.eyebrow::before{content:'';width:30px;height:1px;background:var(--orange)}
+.eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--orange),transparent)}
+
+h1{font-family:'Montserrat',sans-serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:900;line-height:.92;letter-spacing:-.03em;margin-bottom:1.8rem;animation:fadeUp .9s ease .3s both}
+h1 .l1{display:block;color:var(--silver)}
+h1 .l2{display:block;color:var(--orange);text-shadow:0 0 40px rgba(255,107,0,0.3)}
+h1 .l3{display:block;color:var(--warm)}
+
+.hero-desc{font-size:.95rem;color:rgba(255,248,240,.5);line-height:1.8;font-weight:400;max-width:440px;margin-bottom:2.5rem;animation:fadeUp .9s ease .5s both}
+.hero-desc strong{color:var(--warm);font-weight:600}
+
+.cta-group{display:flex;flex-direction:column;gap:.75rem;animation:fadeUp .9s ease .6s both}
+.btn-main{display:inline-flex;align-items:center;justify-content:space-between;gap:1.5rem;background:var(--orange);color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;padding:1.1rem 2rem;text-decoration:none;border-radius:4px;transition:all .3s;max-width:400px;position:relative;overflow:hidden}
+.btn-main::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .5s}
+.btn-main:hover::before{transform:translateX(100%)}
+.btn-main:hover{background:var(--orange2);transform:translateY(-3px);box-shadow:0 10px 35px rgba(255,107,0,.45)}
+.btn-main .a{font-size:20px;transition:transform .2s}
+.btn-main:hover .a{transform:translateX(4px)}
+.footnote{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,248,240,.2);letter-spacing:.1em}
+
+/* HERO RIGHT — animated chapter card */
+.hero-card{background:var(--navy3);border:1px solid var(--border);padding:0;position:relative;overflow:hidden;animation:glow 5s ease-in-out infinite,floatY 7s ease-in-out infinite}
+.hero-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange2),var(--orange))}
+.hc-top{background:var(--orange);padding:.9rem 1.4rem;display:flex;justify-content:space-between;align-items:center}
+.hc-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--navy);letter-spacing:.15em;text-transform:uppercase}
+.hc-pages{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(6,11,24,.6);letter-spacing:.1em}
+.ch-list{list-style:none;padding:.5rem 0}
+.ch-row{display:flex;align-items:center;gap:12px;padding:.6rem 1.4rem;border-bottom:1px solid rgba(255,255,255,.03);transition:all .2s;cursor:default}
+.ch-row:hover{background:rgba(255,107,0,.05);padding-left:1.8rem}
+.ch-n{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--orange);min-width:24px;font-weight:500}
+.ch-t{font-size:12px;color:rgba(255,248,240,.6);font-weight:500}
+.ch-t b{color:var(--warm);font-weight:700}
+.hc-foot{padding:1rem 1.4rem;border-top:1px solid var(--border2);display:flex;justify-content:space-between;align-items:center}
+.hc-price{font-family:'Montserrat',sans-serif;font-size:2.5rem;font-weight:900;color:var(--orange);line-height:1}
+.hc-btn{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;background:var(--orange);color:var(--navy);padding:8px 16px;text-decoration:none;border-radius:3px;transition:all .2s}
+.hc-btn:hover{background:var(--orange2)}
+
+/* STATS */
+.stats{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.s-box{padding:2rem 1.5rem;text-align:center;border-right:1px solid rgba(255,107,0,.07);transition:background .3s;cursor:default;position:relative;overflow:hidden}
+.s-box:last-child{border:none}
+.s-box:hover{background:var(--navy3)}
+.s-box::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--orange);transition:width .4s}
+.s-box:hover::after{width:80%}
+.s-num{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:900;color:var(--orange);display:block;line-height:1}
+.s-lbl{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-top:6px;display:block}
+
+/* SCROLL CARDS */
+.scroll-sec{padding:4rem 0;overflow:hidden;position:relative;z-index:1}
+.scroll-hdr{max-width:1100px;margin:0 auto;padding:0 2rem 2.5rem;text-align:center}
+.sec-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem}
+h2{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:var(--warm);line-height:1;letter-spacing:-.02em}
+h2 em{color:var(--orange);font-style:normal}
+.sec-sub{font-size:.9rem;color:var(--muted);line-height:1.7;margin-top:.6rem;max-width:420px;margin-left:auto;margin-right:auto}
+
+.scroll-row{display:flex;gap:1rem;width:max-content;padding:.4rem 0;margin-bottom:.9rem}
+.row-l{animation:trackL 38s linear infinite}
+.row-r{animation:trackR 44s linear infinite}
+.scroll-row:hover{animation-play-state:paused}
+
+.ch-card{flex-shrink:0;width:300px;background:var(--navy3);overflow:hidden;border:1px solid rgba(255,107,0,.12);transition:all .3s;cursor:default}
+.ch-card:hover{border-color:var(--orange);transform:translateY(-5px);box-shadow:0 10px 30px rgba(255,107,0,.15)}
+.cc-top{background:var(--orange);padding:.6rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.cc-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--navy);letter-spacing:.15em}
+.cc-cat{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(6,11,24,.55);letter-spacing:.1em;text-transform:uppercase}
+.cc-body{padding:1.2rem 1rem}
+.cc-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:var(--orange);margin-bottom:.4rem;line-height:1.2}
+.cc-desc{font-size:12.5px;color:rgba(255,248,240,.55);line-height:1.65;font-weight:400}
+
+/* WHY SECTION */
+.why-sec{background:var(--navy2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1}
+.why-inner{max-width:1100px;margin:0 auto;padding:4rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.why-l h2{margin-bottom:1.2rem;text-align:left}
+.why-l p{font-size:.9rem;color:var(--muted);line-height:1.8;margin-bottom:.8rem}
+.why-l p strong{color:var(--warm)}
+.why-cards{display:flex;flex-direction:column;gap:.65rem}
+.w-card{background:var(--navy);border-left:3px solid var(--orange);padding:1.1rem 1.4rem;transition:all .3s;cursor:default}
+.w-card:hover{transform:translateX(6px);box-shadow:-3px 0 20px rgba(255,107,0,.15)}
+.wc-tag{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,107,0,.6);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.3rem}
+.wc-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--warm);margin-bottom:.25rem}
+.wc-body{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* PRICE */
+.price-sec{position:relative;z-index:1;padding:4rem 2rem}
+.price-inner{max-width:900px;margin:0 auto}
+.p-card{background:var(--navy2);border:1px solid var(--border);padding:3rem 2.5rem;position:relative;overflow:hidden;border-radius:4px}
+.p-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),var(--orange2),var(--orange))}
+.p-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(255,107,0,.06),transparent 60%);pointer-events:none}
+.p-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.p-left .sec-tag{margin-bottom:.6rem;text-align:left}
+.p-left h2{text-align:left;margin-bottom:1rem}
+.inc-list{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-top:1rem}
+.inc-i{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--muted);font-weight:500}
+.inc-i::before{content:'▸';color:var(--orange);flex-shrink:0;font-size:10px;margin-top:1px}
+.p-right{text-align:center}
+.pc-was{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);text-decoration:line-through;margin-bottom:.2rem}
+.pc-price{font-family:'Montserrat',sans-serif;font-size:7rem;font-weight:900;color:var(--orange);line-height:1;text-shadow:0 0 40px rgba(255,107,0,.3)}
+.pc-terms{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.5rem}
+.btn-buy{display:flex;align-items:center;justify-content:center;gap:.75rem;width:100%;background:var(--orange);color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;padding:1.1rem;text-decoration:none;border-radius:4px;transition:all .3s;position:relative;overflow:hidden;margin-bottom:.6rem}
+.btn-buy::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .4s}
+.btn-buy:hover::before{transform:translateX(100%)}
+.btn-buy:hover{background:var(--orange2);box-shadow:0 6px 30px rgba(255,107,0,.45);transform:translateY(-2px)}
+.pc-foot{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+
+/* FINAL CTA */
+.final{text-align:center;padding:5rem 2rem;position:relative;overflow:hidden;z-index:1}
+.final-blob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(255,107,0,.06),transparent 70%);border-radius:50%;animation:blob 10s ease-in-out infinite;pointer-events:none}
+.final-tag{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--orange);margin-bottom:1.2rem}
+.final-h{font-family:'Montserrat',sans-serif;font-size:clamp(2.2rem,5vw,4.5rem);font-weight:900;color:var(--warm);line-height:1;margin-bottom:1rem;letter-spacing:-.02em}
+.final-h em{color:var(--orange);font-style:normal}
+.final-sub{font-size:.9rem;color:var(--muted);max-width:340px;margin:0 auto 2rem;line-height:1.7}
+.final-note{margin-top:.75rem;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,107,0,.4);letter-spacing:.12em;text-transform:uppercase}
+
+/* FOOTER */
+footer{background:var(--navy2);border-top:1px solid var(--border);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+.foot-logo{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:var(--warm)}
+.foot-logo em{color:var(--orange);font-style:normal}
+.foot-copy{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.08em}
+.orange-bar{height:3px;background:linear-gradient(90deg,var(--navy),var(--orange),var(--orange2),var(--orange),var(--navy));position:relative;z-index:1}
+
+/* TICKER */
+.ticker{background:var(--orange);overflow:hidden;padding:.5rem 0;position:relative;z-index:1}
+.ticker-track{display:flex;animation:trackL 20s linear infinite;white-space:nowrap}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--navy);font-weight:700;letter-spacing:.12em;padding:0 2rem;flex-shrink:0}
+.ticker-item::before{content:'◆  ';opacity:.4}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr}.hero-card{display:none}
+  .why-inner{grid-template-columns:1fr}
+  .p-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}.s-box:nth-child(3){border-top:1px solid rgba(255,107,0,.07)}.s-box:nth-child(4){border-top:1px solid rgba(255,107,0,.07);border-right:none}
+  footer{flex-direction:column;gap:.75rem;text-align:center}
+}
+@media(max-width:600px){
+  nav{padding:.8rem 1.2rem}.hero{padding:6rem 1.2rem 3rem}
+  .scroll-hdr,.why-inner,.price-sec,.final{padding-left:1.2rem;padding-right:1.2rem}
+  h1{font-size:2.8rem}.inc-list{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<canvas id="cv"></canvas>
+<div class="scan"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Zaden <em>James</em></div>
+  <div class="nav-right">
+    <div class="nav-tag">$14 · 25 PAGES</div>
+    <a href="https://zadenjames.gumroad.com/l/zvevew" class="nav-btn" target="_blank">Get It →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slash"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Digital Business · Zaden James</div>
+      <h1>
+        <span class="l1">THE DIGITAL</span>
+        <span class="l2">PRODUCT</span>
+        <span class="l3">BLUEPRINT</span>
+      </h1>
+      <p class="hero-desc"><strong>Research. Validate. Build. Launch. Scale.</strong> The complete end-to-end system for creating a digital product that sells — from first idea to automated passive income. No audience. No experience. No excuses.</p>
+      <div class="cta-group">
+        <a href="https://zadenjames.gumroad.com/l/zvevew" class="btn-main" target="_blank">
+          <span>Get The Blueprint — $14</span><span class="a">→</span>
+        </a>
+        <div class="footnote">// instant_pdf · 25_pages · no_subscription · secure_checkout</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-top">
+        <div class="hc-label">// What's Inside</div>
+        <div class="hc-pages">25 PAGES</div>
+      </div>
+      <ul class="ch-list">
+        <li class="ch-row"><span class="ch-n">01</span><span class="ch-t"><b>The Digital Product Opportunity</b></span></li>
+        <li class="ch-row"><span class="ch-n">02</span><span class="ch-t"><b>Idea Generation & Market Research</b></span></li>
+        <li class="ch-row"><span class="ch-n">03</span><span class="ch-t"><b>Validation Before You Build</b></span></li>
+        <li class="ch-row"><span class="ch-n">04</span><span class="ch-t"><b>Choosing Your Product Format</b></span></li>
+        <li class="ch-row"><span class="ch-n">05</span><span class="ch-t"><b>Writing & Creating Your Product</b></span></li>
+        <li class="ch-row"><span class="ch-n">06</span><span class="ch-t"><b>Pricing Strategy & Positioning</b></span></li>
+        <li class="ch-row"><span class="ch-n">07</span><span class="ch-t"><b>Platform Selection & Setup</b></span></li>
+        <li class="ch-row"><span class="ch-n">08</span><span class="ch-t"><b>Launch Strategy — Zero to First Sale</b></span></li>
+        <li class="ch-row"><span class="ch-n">09</span><span class="ch-t"><b>Scaling & Automation</b></span></li>
+        <li class="ch-row" style="color:var(--orange)"><span class="ch-n" style="color:var(--orange2)">+</span><span class="ch-t" style="color:var(--orange)"><b>3 Bonus Tools Inside</b></span></li>
+      </ul>
+      <div class="hc-foot">
+        <div class="hc-price">$14</div>
+        <a href="https://zadenjames.gumroad.com/l/zvevew" class="hc-btn" target="_blank">Get Instant Access →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Research</span><span class="ticker-item">Validate</span><span class="ticker-item">Build</span><span class="ticker-item">Launch</span><span class="ticker-item">Scale</span><span class="ticker-item">9 Chapters</span><span class="ticker-item">25 Pages</span><span class="ticker-item">3 Bonus Tools</span><span class="ticker-item">Zero Audience Needed</span><span class="ticker-item">$0 Tools Cost</span><span class="ticker-item">One Weekend to Build</span><span class="ticker-item">Instant PDF</span>
+    <span class="ticker-item">Research</span><span class="ticker-item">Validate</span><span class="ticker-item">Build</span><span class="ticker-item">Launch</span><span class="ticker-item">Scale</span><span class="ticker-item">9 Chapters</span><span class="ticker-item">25 Pages</span><span class="ticker-item">3 Bonus Tools</span><span class="ticker-item">Zero Audience Needed</span><span class="ticker-item">$0 Tools Cost</span><span class="ticker-item">One Weekend to Build</span><span class="ticker-item">Instant PDF</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="s-box reveal"><span class="s-num">25</span><span class="s-lbl">Pages</span></div>
+    <div class="s-box reveal d1"><span class="s-num">9</span><span class="s-lbl">Chapters</span></div>
+    <div class="s-box reveal d2"><span class="s-num">$0</span><span class="s-lbl">Tools Cost</span></div>
+    <div class="s-box reveal d3"><span class="s-num">48h</span><span class="s-lbl">To Validate</span></div>
+  </div>
+</div>
+
+<!-- SCROLLING CHAPTER CARDS -->
+<section class="scroll-sec">
+  <div class="scroll-hdr reveal">
+    <div class="sec-tag">// Inside — hover to pause</div>
+    <h2>Every chapter is a <em>system.</em></h2>
+    <p class="sec-sub">Real chapters scrolling live. Both rows pause on hover.</p>
+  </div>
+
+  <div class="scroll-row row-l">
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 01</span><span class="cc-cat">Opportunity</span></div><div class="cc-body"><div class="cc-title">The Digital Product Opportunity</div><div class="cc-desc">$300 billion and growing. Why solo creators are winning and why right now is the best moment to enter.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 02</span><span class="cc-cat">Research</span></div><div class="cc-body"><div class="cc-title">Idea Generation & Market Research</div><div class="cc-desc">Four research sources. The Idea Scoring Matrix. Score every idea before spending an hour creating.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 03</span><span class="cc-cat">Validation</span></div><div class="cc-body"><div class="cc-title">The 48-Hour Validation Test</div><div class="cc-desc">Pre-sell before you build. Confirm real purchase intent before investing your time.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 04</span><span class="cc-cat">Format</span></div><div class="cc-body"><div class="cc-title">Choosing Your Product Format</div><div class="cc-desc">PDF, template, checklist, swipe file — matched to price ceiling and market expectation.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 05</span><span class="cc-cat">Creation</span></div><div class="cc-body"><div class="cc-title">The One-Weekend Creation System</div><div class="cc-desc">Outline Saturday. Draft Saturday. Edit Sunday. Design Sunday. Done in two focused days.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">BONUS A</span><span class="cc-cat">Tool</span></div><div class="cc-body"><div class="cc-title">Product Validation Scorecard</div><div class="cc-desc">Score every idea 1-5 across 5 criteria. 18+ is your green light. Fill-in and keep.</div></div></div>
+    <!-- duplicates for seamless loop -->
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 01</span><span class="cc-cat">Opportunity</span></div><div class="cc-body"><div class="cc-title">The Digital Product Opportunity</div><div class="cc-desc">$300 billion and growing. Why solo creators are winning and why right now is the best moment to enter.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 02</span><span class="cc-cat">Research</span></div><div class="cc-body"><div class="cc-title">Idea Generation & Market Research</div><div class="cc-desc">Four research sources. The Idea Scoring Matrix. Score every idea before spending an hour creating.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 03</span><span class="cc-cat">Validation</span></div><div class="cc-body"><div class="cc-title">The 48-Hour Validation Test</div><div class="cc-desc">Pre-sell before you build. Confirm real purchase intent before investing your time.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 04</span><span class="cc-cat">Format</span></div><div class="cc-body"><div class="cc-title">Choosing Your Product Format</div><div class="cc-desc">PDF, template, checklist, swipe file — matched to price ceiling and market expectation.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 05</span><span class="cc-cat">Creation</span></div><div class="cc-body"><div class="cc-title">The One-Weekend Creation System</div><div class="cc-desc">Outline Saturday. Draft Saturday. Edit Sunday. Design Sunday. Done in two focused days.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">BONUS A</span><span class="cc-cat">Tool</span></div><div class="cc-body"><div class="cc-title">Product Validation Scorecard</div><div class="cc-desc">Score every idea 1-5 across 5 criteria. 18+ is your green light. Fill-in and keep.</div></div></div>
+  </div>
+
+  <div class="scroll-row row-r">
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 06</span><span class="cc-cat">Pricing</span></div><div class="cc-body"><div class="cc-title">Pricing Strategy & Positioning</div><div class="cc-desc">Three price tiers. Why undercharging is the most costly mistake first-time creators make.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 07</span><span class="cc-cat">Platform</span></div><div class="cc-body"><div class="cc-title">Platform Selection & Setup</div><div class="cc-desc">Live and selling in 30 minutes. Gumroad, Payhip, Lemon Squeezy compared. No website needed.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 08</span><span class="cc-cat">Launch</span></div><div class="cc-body"><div class="cc-title">Zero to First Sale in 7 Days</div><div class="cc-desc">Day-by-day launch plan. Reddit, LinkedIn, Twitter, Pinterest. No existing audience required.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 09</span><span class="cc-cat">Scale</span></div><div class="cc-body"><div class="cc-title">Scaling & Automation</div><div class="cc-desc">Four automation levers. Remove yourself from distribution. Income without daily involvement.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">BONUS B</span><span class="cc-cat">Checklist</span></div><div class="cc-body"><div class="cc-title">Launch Day Checklist</div><div class="cc-desc">Every item before you share your link. Product, page, content, post-sale. Nothing missed.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">BONUS C</span><span class="cc-cat">Roadmap</span></div><div class="cc-body"><div class="cc-title">90-Day Revenue Roadmap</div><div class="cc-desc">Week-by-week from first idea to first consistent passive income month. The exact sequence.</div></div></div>
+    <!-- duplicates -->
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 06</span><span class="cc-cat">Pricing</span></div><div class="cc-body"><div class="cc-title">Pricing Strategy & Positioning</div><div class="cc-desc">Three price tiers. Why undercharging is the most costly mistake first-time creators make.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 07</span><span class="cc-cat">Platform</span></div><div class="cc-body"><div class="cc-title">Platform Selection & Setup</div><div class="cc-desc">Live and selling in 30 minutes. Gumroad, Payhip, Lemon Squeezy compared. No website needed.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 08</span><span class="cc-cat">Launch</span></div><div class="cc-body"><div class="cc-title">Zero to First Sale in 7 Days</div><div class="cc-desc">Day-by-day launch plan. Reddit, LinkedIn, Twitter, Pinterest. No existing audience required.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">CH 09</span><span class="cc-cat">Scale</span></div><div class="cc-body"><div class="cc-title">Scaling & Automation</div><div class="cc-desc">Four automation levers. Remove yourself from distribution. Income without daily involvement.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">BONUS B</span><span class="cc-cat">Checklist</span></div><div class="cc-body"><div class="cc-title">Launch Day Checklist</div><div class="cc-desc">Every item before you share your link. Product, page, content, post-sale. Nothing missed.</div></div></div>
+    <div class="ch-card"><div class="cc-top"><span class="cc-num">BONUS C</span><span class="cc-cat">Roadmap</span></div><div class="cc-body"><div class="cc-title">90-Day Revenue Roadmap</div><div class="cc-desc">Week-by-week from first idea to first consistent passive income month. The exact sequence.</div></div></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<div class="why-sec">
+  <div class="why-inner">
+    <div class="why-l rl">
+      <div class="sec-tag" style="text-align:left;margin-bottom:.5rem">// Why it works</div>
+      <h2>Every chapter is a <em>decision eliminated.</em></h2>
+      <p>Most guides tell you <strong>what to do.</strong> This tells you <strong>exactly how</strong> — frameworks, checklists, scored decisions, and a sequence from idea to first sale.</p>
+    </div>
+    <div class="why-cards rr d2">
+      <div class="w-card"><div class="wc-tag">Ch 02 — Research</div><div class="wc-title">The Idea Scoring Matrix</div><div class="wc-body">Score every idea across 5 criteria. 18+ is your green light. No guessing.</div></div>
+      <div class="w-card"><div class="wc-tag">Ch 03 — Validation</div><div class="wc-title">The 48-Hour Pre-Sale Test</div><div class="wc-body">Confirm purchase intent before writing a word. Catches failures before they cost you.</div></div>
+      <div class="w-card"><div class="wc-tag">Ch 06 — Pricing</div><div class="wc-title">Price the Outcome, Not the Time</div><div class="wc-body">The tier framework that tells you exactly what to charge and why it makes more sales.</div></div>
+      <div class="w-card"><div class="wc-tag">Ch 08 — Launch</div><div class="wc-title">The 7-Day Launch Plan</div><div class="wc-body">Day-by-day across Reddit, LinkedIn, Twitter, Pinterest. No audience needed.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICE -->
+<section class="price-sec">
+  <div class="price-inner">
+    <div class="p-card reveal">
+      <div class="p-grid">
+        <div class="p-left">
+          <div class="sec-tag" style="text-align:left;margin-bottom:.5rem">// Your investment</div>
+          <h2 style="text-align:left">Everything to build your <em>first product.</em></h2>
+          <div class="inc-list">
+            <div class="inc-i">9 chapters end-to-end</div>
+            <div class="inc-i">Idea Scoring Matrix</div>
+            <div class="inc-i">48-hour validation system</div>
+            <div class="inc-i">One-weekend framework</div>
+            <div class="inc-i">3-tier pricing strategy</div>
+            <div class="inc-i">7-day launch plan</div>
+            <div class="inc-i">4 automation levers</div>
+            <div class="inc-i">Bonus A — Scorecard</div>
+            <div class="inc-i">Bonus B — Checklist</div>
+            <div class="inc-i">Bonus C — 90-Day Roadmap</div>
+            <div class="inc-i">25 pages · PDF · instant</div>
+            <div class="inc-i">$0 tools to start</div>
+          </div>
+        </div>
+        <div class="p-right">
+          <div class="pc-was">// valued at $47+</div>
+          <div class="pc-price">$14</div>
+          <div class="pc-terms">ONE-TIME · NO SUBSCRIPTION</div>
+          <a href="https://zadenjames.gumroad.com/l/zvevew" class="btn-buy" target="_blank">Get The Blueprint — $14 →</a>
+          <div class="pc-foot">SECURE · PDF INSTANT · 25 PAGES</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final">
+  <div class="final-blob"></div>
+  <div class="final-tag">// Execute</div>
+  <div class="final-h">The system exists.<br><em>Run it.</em></div>
+  <p class="final-sub">25 pages. Every framework. $14 and yours in 60 seconds.</p>
+  <a href="https://zadenjames.gumroad.com/l/zvevew" class="btn-main" target="_blank" style="margin:0 auto;max-width:420px">
+    <span>Get The Blueprint — $14</span><span class="a">→</span>
+  </a>
+  <div class="final-note">// $14 · ONE-TIME · 25 PAGES · INSTANT PDF · ZADEN JAMES</div>
+</div>
+
+<div class="orange-bar"></div>
+<footer>
+  <div class="foot-logo">Zaden <em>James</em></div>
+  <div class="foot-copy">© 2025 · THE DIGITAL PRODUCT BLUEPRINT · ALL RIGHTS RESERVED</div>
+</footer>
+
+<script>
+// PARTICLES
+const canvas=document.getElementById('cv');
+const ctx=canvas.getContext('2d');
+let W,H,pts=[];
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+resize();window.addEventListener('resize',resize);
+let mx=-999,my=-999;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+
+class P{
+  constructor(){this.reset()}
+  reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.3+.3;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.05;this.orange=Math.random()>.75}
+  update(){
+    if(this.orange){const dx=mx-this.x,dy=my-this.y,d=Math.sqrt(dx*dx+dy*dy);if(d<140){this.x+=dx*.005;this.y+=dy*.005}}
+    this.x+=this.vx;this.y+=this.vy;
+    if(this.x<0||this.x>W||this.y<0||this.y>H)this.reset();
+  }
+  draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.orange?'#FF6B00':'#334';ctx.globalAlpha=this.o;ctx.fill();ctx.globalAlpha=1}
+}
+for(let i=0;i<90;i++)pts.push(new P());
+
+function animP(){
+  ctx.clearRect(0,0,W,H);
+  for(let i=0;i<pts.length;i++){
+    pts[i].update();pts[i].draw();
+    for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<80){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(255,107,0,${.05*(1-d/80)})`;ctx.lineWidth=.4;ctx.stroke()}
+    }
+  }
+  requestAnimationFrame(animP);
+}
+animP();
+
+// NAV
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
+
+// REVEAL
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal,.rl,.rr').forEach(el=>obs.observe(el));
+
+// MAGNETIC BUTTONS
+document.querySelectorAll('.btn-main,.btn-buy,.nav-btn').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    btn.style.transform=`translate(${(e.clientX-(r.left+r.width/2))*.08}px,${(e.clientY-(r.top+r.height/2))*.08}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>btn.style.transform='');
+});
+
+// GLITCH on hero title
+const l2=document.querySelector('h1 .l2');
+if(l2){setInterval(()=>{l2.style.textShadow='2px 0 #FF6B00,-2px 0 rgba(0,200,255,.25)';setTimeout(()=>l2.style.textShadow='0 0 40px rgba(255,107,0,.3)',80)},5000)}
+</script>
+</body>
+</html>
