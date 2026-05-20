@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Goal Achievement Guide — Zaden James</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#0D1B2A;--gold:#C9A84C;--cream:#FAF7EE;--white:#fff;--grey:#555}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.hero-left{background:var(--navy);padding:80px 60px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero-left::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;border:1px solid rgba(201,168,76,0.15);top:-100px;left:-100px}
+.hero-left::after{content:'';position:absolute;width:300px;height:300px;border-radius:50%;border:1px solid rgba(201,168,76,0.1);bottom:-50px;right:-50px}
+.hero-right{background:var(--cream);padding:80px 60px;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:32px;font-weight:500}
+.hero-left h1{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,5vw,80px);color:var(--white);line-height:1.05;margin-bottom:24px;font-weight:600}
+.hero-left h1 em{color:var(--gold);font-style:italic}
+.gold-line{width:60px;height:2px;background:var(--gold);margin-bottom:28px}
+.hero-left p{color:#8899AA;font-size:16px;line-height:1.8;max-width:380px}
+.page-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.4);color:var(--gold);font-size:13px;font-weight:500;padding:8px 18px;border-radius:100px;margin-bottom:28px}
+.price-display{margin-bottom:32px}
+.price-display .amount{font-family:'Cormorant Garamond',serif;font-size:72px;color:var(--navy);font-weight:700;line-height:1}
+.price-display .period{font-size:14px;color:var(--grey);margin-top:4px}
+.buy-btn{display:block;background:var(--navy);color:var(--white);font-weight:500;font-size:16px;padding:18px 40px;border-radius:4px;text-decoration:none;text-align:center;transition:all 0.25s;margin-bottom:20px;letter-spacing:0.5px}
+.buy-btn:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+.trust-row{display:flex;gap:16px;flex-wrap:wrap}
+.trust-item{font-size:12px;color:var(--grey);display:flex;align-items:center;gap:5px}
+.trust-item::before{content:'✓';color:var(--gold);font-weight:700}
+.stats-strip{background:var(--gold);display:grid;grid-template-columns:repeat(4,1fr)}
+.strip-stat{padding:28px;text-align:center;border-right:1px solid rgba(13,27,42,0.15)}
+.strip-stat:last-child{border:none}
+.strip-num{font-family:'Cormorant Garamond',serif;font-size:44px;color:var(--navy);font-weight:700;line-height:1}
+.strip-label{font-size:11px;color:rgba(13,27,42,0.7);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.about{display:grid;grid-template-columns:1fr 2fr;gap:0;max-width:1100px;margin:100px auto;padding:0 40px}
+.about-label{writing-mode:vertical-rl;transform:rotate(180deg);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:500;padding-right:40px;border-right:1px solid var(--gold)}
+.about-content h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);color:var(--navy);margin-bottom:24px;line-height:1.2;font-weight:600}
+.about-content p{font-size:16px;color:var(--grey);line-height:1.9;margin-bottom:16px}
+.features-section{background:var(--navy);padding:100px 40px}
+.features-inner{max-width:1100px;margin:0 auto}
+.features-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:60px}
+.features-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);color:var(--white);font-weight:600;line-height:1.1}
+.features-header h2 span{color:var(--gold);font-style:italic}
+.features-sub{color:#8899AA;font-size:14px;max-width:280px;text-align:right;line-height:1.7}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.feat{background:rgba(255,255,255,0.04);padding:40px 32px;border-top:2px solid transparent;transition:all 0.3s}
+.feat:hover{background:rgba(255,255,255,0.08);border-top-color:var(--gold)}
+.feat-num{font-family:'Cormorant Garamond',serif;font-size:48px;color:rgba(201,168,76,0.2);font-weight:700;line-height:1;margin-bottom:16px}
+.feat h3{font-size:15px;font-weight:500;color:var(--white);margin-bottom:10px}
+.feat p{font-size:13px;color:#8899AA;line-height:1.7}
+.chapters-section{max-width:900px;margin:100px auto;padding:0 40px}
+.chapters-header{text-align:center;margin-bottom:60px}
+.chapters-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);color:var(--navy);font-weight:600}
+.timeline{position:relative;padding-left:40px}
+.timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:1px;background:var(--gold);opacity:0.3}
+.tl-item{position:relative;padding:0 0 40px 40px}
+.tl-item::before{content:'';position:absolute;left:-4px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.tl-num{font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:6px;font-weight:500}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--navy);font-weight:600;margin-bottom:6px}
+.tl-desc{font-size:14px;color:var(--grey);line-height:1.7}
+.quote-wrap{background:var(--navy);padding:100px 40px;text-align:center}
+.big-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,52px);color:var(--white);max-width:800px;margin:0 auto;line-height:1.4;font-style:italic;font-weight:400}
+.big-quote::before{content:'"';color:var(--gold);font-size:80px;line-height:0;vertical-align:-30px;margin-right:8px}
+.quote-sig{color:var(--gold);margin-top:32px;font-size:14px;letter-spacing:3px;text-transform:uppercase}
+.cta-wrap{background:var(--cream);padding:100px 40px;text-align:center}
+.cta-inner{max-width:600px;margin:0 auto}
+.cta-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,64px);color:var(--navy);margin-bottom:16px;font-weight:600;line-height:1.1}
+.cta-inner h2 em{color:var(--gold);font-style:italic}
+.cta-inner p{color:var(--grey);font-size:16px;margin-bottom:40px;line-height:1.7}
+.cta-price{font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--navy);font-weight:700;line-height:1;margin-bottom:8px}
+.cta-sub{font-size:13px;color:var(--grey);margin-bottom:36px}
+.cta-btn-large{display:inline-block;background:var(--navy);color:var(--white);font-size:16px;font-weight:500;padding:20px 64px;border-radius:4px;text-decoration:none;transition:all 0.25s;letter-spacing:1px;text-transform:uppercase}
+.cta-btn-large:hover{background:var(--gold);color:var(--navy)}
+footer{background:var(--navy);padding:32px;text-align:center;color:#445566;font-size:13px}
+footer a{color:var(--gold);text-decoration:none}
+@media(max-width:768px){.hero{grid-template-columns:1fr}.hero-left,.hero-right{padding:60px 30px}.stats-strip{grid-template-columns:repeat(2,1fr)}.about{grid-template-columns:1fr;padding:0 24px}.about-label{writing-mode:horizontal-tb;transform:none;border-right:none;border-bottom:1px solid var(--gold);padding:0 0 16px;margin-bottom:24px}.features-grid{grid-template-columns:1fr}.features-header{flex-direction:column;gap:20px}.features-sub{text-align:left}.chapters-section{padding:0 24px}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Zaden James — Digital Guides</div>
+    <div class="gold-line"></div>
+    <h1>The Goal<br><em>Achievement</em><br>Guide</h1>
+    <p>A complete system to take any goal from vague idea to crystal-clear action plan — with the structure, tracking, and motivation strategies to actually see it through.</p>
+  </div>
+  <div class="hero-right">
+    <div class="page-pill">📄 22 Pages of Actionable Content</div>
+    <div class="price-display">
+      <div class="amount">$7.00</div>
+      <div class="period">One-time payment · No subscription</div>
+    </div>
+    <a href="https://zadenjames.s.gy/nt-guide" class="buy-btn">Download Instantly →</a>
+    <div class="trust-row">
+      <div class="trust-item">22 Pages</div>
+      <div class="trust-item">7 Chapters</div>
+      <div class="trust-item">Worksheets</div>
+      <div class="trust-item">PDF Format</div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-strip">
+  <div class="strip-stat"><div class="strip-num">22</div><div class="strip-label">Pages</div></div>
+  <div class="strip-stat"><div class="strip-num">7</div><div class="strip-label">Chapters</div></div>
+  <div class="strip-stat"><div class="strip-num">5+</div><div class="strip-label">Worksheets</div></div>
+  <div class="strip-stat"><div class="strip-num">$7</div><div class="strip-label">One-Time</div></div>
+</div>
+
+<div class="about">
+  <div class="about-label">The Problem</div>
+  <div class="about-content">
+    <h2>Most goals fail not because of lack of motivation — but lack of structure.</h2>
+    <p>Most people set goals the wrong way. Vague intentions, no timeline, no tracking. They feel motivated for a week then watch the goal quietly fade.</p>
+    <p>This guide fixes that. It gives you a proven, step-by-step system to build goals that are specific, measurable, and backed by daily action — so achieving what you want becomes a matter of when, not if.</p>
+  </div>
+</div>
+
+<div class="features-section">
+  <div class="features-inner">
+    <div class="features-header">
+      <h2>Everything inside<br>this <span>22-page guide</span></h2>
+      <div class="features-sub">Six powerful frameworks and tools — all in one practical PDF you can start using today.</div>
+    </div>
+    <div class="features-grid">
+      <div class="feat"><div class="feat-num">01</div><h3>SMART Goals Framework</h3><p>Build goals that are Specific, Measurable, Achievable, Relevant and Time-bound — the right way.</p></div>
+      <div class="feat"><div class="feat-num">02</div><h3>Values-Based Goal Setting</h3><p>Align your goals with what truly matters so they feel natural and energising — not forced.</p></div>
+      <div class="feat"><div class="feat-num">03</div><h3>Daily Tracking System</h3><p>A printable habit tracker and weekly check-in system to keep you on course without overwhelm.</p></div>
+      <div class="feat"><div class="feat-num">04</div><h3>2-Week Jumpstart Challenge</h3><p>Day-by-day structure for the critical first two weeks when habits and momentum are built.</p></div>
+      <div class="feat"><div class="feat-num">05</div><h3>3-Layer Breakdown System</h3><p>Break any goal into milestones, weekly targets and daily actions — you always know your next step.</p></div>
+      <div class="feat"><div class="feat-num">06</div><h3>Motivation Strategies</h3><p>Five proven techniques for the dip every goal hits around week three or four.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="chapters-section">
+  <div class="chapters-header"><h2>Seven Chapters. One Complete System.</h2></div>
+  <div class="timeline">
+    <div class="tl-item"><div class="tl-num">Chapter 01</div><div class="tl-title">Why Most Goals Fail</div><div class="tl-desc">The 5 real reasons goals fail and the direct solution to each one.</div></div>
+    <div class="tl-item"><div class="tl-num">Chapter 02</div><div class="tl-title">Define What Truly Matters</div><div class="tl-desc">Core values exercise and the values test that filters every goal.</div></div>
+    <div class="tl-item"><div class="tl-num">Chapter 03</div><div class="tl-title">The SMART Goals Framework</div><div class="tl-desc">Build your complete SMART goal with the included worksheet.</div></div>
+    <div class="tl-item"><div class="tl-num">Chapter 04</div><div class="tl-title">Break It Down Into Action</div><div class="tl-desc">Milestones, weekly targets, daily actions — always know your next step.</div></div>
+    <div class="tl-item"><div class="tl-num">Chapter 05</div><div class="tl-title">Your Tracking System</div><div class="tl-desc">Weekly check-in questions and your printable daily habit tracker.</div></div>
+    <div class="tl-item"><div class="tl-num">Chapter 06</div><div class="tl-title">The 2-Week Jumpstart Challenge</div><div class="tl-desc">Day-by-day structure for the critical first two weeks.</div></div>
+    <div class="tl-item"><div class="tl-num">Chapter 07</div><div class="tl-title">Staying Motivated When It Gets Hard</div><div class="tl-desc">Five motivation strategies that work when willpower runs out.</div></div>
+  </div>
+</div>
+
+<div class="quote-wrap">
+  <div class="big-quote">A goal without a plan is just a wish. This guide turns wishes into wins.</div>
+  <div class="quote-sig">— Zaden James</div>
+</div>
+
+<div class="cta-wrap">
+  <div class="cta-inner">
+    <h2>Get the Guide.<br><em>Achieve More.</em></h2>
+    <p>22 pages. 7 chapters. Worksheets included. Everything you need to set and achieve any goal — for less than a coffee.</p>
+    <div class="cta-price">$7.00</div>
+    <div class="cta-sub">One-time · Instant PDF download · Instant Download</div>
+    <a href="https://zadenjames.s.gy/nt-guide" class="cta-btn-large">Get Instant Access</a>
+  </div>
+</div>
+
+<footer><p>© 2025 Zaden James Digital · <a href="#">Privacy Policy</a> · Delivered instantly via Gumroad</p></footer>
+</body>
+</html>
