@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50 Income Streams That Actually Pay — Zaden James</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Inter:wght@300;400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--mid:#050A1A;--navy:#0A1628;--gold:#FFD700;--gold2:#B8960C;--white:#fff;--warm:#FAFAF5;--lgold:#FFFBEE;--grey:#667}
+  body{font-family:'Inter',sans-serif;background:var(--mid);color:var(--white);overflow-x:hidden}
+
+  /* IMMERSIVE FULL SCREEN HERO */
+  .hero{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto;position:relative;overflow:hidden}
+
+  /* Grid background */
+  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,215,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,215,0,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+
+  .hero-nav{display:flex;justify-content:space-between;align-items:center;padding:28px 60px;border-bottom:1px solid rgba(255,215,0,0.1);position:relative;z-index:2}
+  .nav-brand{font-family:'Unbounded',sans-serif;font-size:13px;color:var(--gold);letter-spacing:2px;font-weight:700}
+  .nav-badge{background:var(--gold);color:var(--mid);font-size:10px;font-weight:700;letter-spacing:3px;padding:8px 20px;text-transform:uppercase}
+
+  .hero-center{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 40px;position:relative;z-index:2}
+
+  /* Massive 50 in background */
+  .bg-50{position:absolute;font-family:'Unbounded',sans-serif;font-size:clamp(300px,50vw,600px);font-weight:900;color:rgba(255,215,0,0.03);line-height:1;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;user-select:none;letter-spacing:-20px}
+
+  .hero-eyebrow{display:flex;align-items:center;gap:16px;margin-bottom:48px}
+  .eyebrow-line{width:40px;height:1px;background:var(--gold)}
+  .eyebrow-txt{font-size:11px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;font-weight:500}
+
+  .hero-h1{font-family:'Unbounded',sans-serif;font-size:clamp(48px,9vw,120px);font-weight:900;line-height:0.9;letter-spacing:-3px;margin-bottom:32px}
+  .hero-h1 .num{color:var(--gold);display:block;font-size:clamp(80px,15vw,200px);line-height:0.85}
+  .hero-h1 .line2{color:var(--white)}
+  .hero-h1 .line3{color:var(--white)}
+
+  .hero-sub{font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,0.45);max-width:550px;line-height:1.8;margin-bottom:64px}
+
+  .hero-cta-group{display:flex;flex-direction:column;align-items:center;gap:20px}
+  .page-counter{display:flex;align-items:center;gap:20px;margin-bottom:8px}
+  .counter-num{font-family:'Unbounded',sans-serif;font-size:56px;color:var(--gold);font-weight:900;line-height:1}
+  .counter-divider{width:1px;height:50px;background:rgba(255,215,0,0.3)}
+  .counter-txt{text-align:left;font-size:11px;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;line-height:1.6}
+  .price-display{font-family:'Unbounded',sans-serif;font-size:clamp(36px,6vw,72px);color:var(--white);font-weight:900;letter-spacing:-2px}
+  .hero-main-btn{display:inline-block;background:var(--gold);color:var(--mid);font-family:'Unbounded',sans-serif;font-weight:700;font-size:13px;padding:20px 56px;text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:all 0.25s;margin-top:8px}
+  .hero-main-btn:hover{background:var(--white);transform:scale(1.04);box-shadow:0 0 60px rgba(255,215,0,0.3)}
+  .hero-note{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:2px;text-transform:uppercase;margin-top:8px}
+
+  .hero-bottom-strip{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,215,0,0.08)}
+  .strip-item{padding:20px 32px;border-right:1px solid rgba(255,215,0,0.08);display:flex;flex-direction:column;gap:4px}
+  .strip-item:last-child{border-right:none}
+  .strip-val{font-family:'Unbounded',sans-serif;font-size:22px;color:var(--gold);font-weight:700;line-height:1}
+  .strip-lbl{font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:2px;text-transform:uppercase}
+
+  /* GOLD WAVE SECTION */
+  .gold-wave{background:var(--gold);padding:80px 60px}
+  .gw-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  .gw-left h2{font-family:'Unbounded',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:900;color:var(--mid);line-height:0.95;letter-spacing:-2px}
+  .gw-left h2 em{font-style:italic;font-weight:300;color:rgba(0,0,0,0.45)}
+  .gw-right p{font-size:16px;color:rgba(0,0,0,0.6);line-height:1.9;margin-bottom:20px}
+  .gw-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:32px}
+  .gw-stat{background:rgba(0,0,0,0.08);padding:20px;text-align:center}
+  .gw-stat-n{font-family:'Unbounded',sans-serif;font-size:36px;font-weight:900;color:var(--mid)}
+  .gw-stat-l{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,0,0,0.45);margin-top:4px}
+
+  /* CATEGORIES SECTION */
+  .categories{background:var(--navy);padding:120px 60px}
+  .cat-inner{max-width:1200px;margin:0 auto}
+  .cat-header{margin-bottom:80px;display:flex;justify-content:space-between;align-items:flex-end}
+  .cat-header h2{font-family:'Unbounded',sans-serif;font-size:clamp(36px,5vw,72px);font-weight:900;line-height:0.9;letter-spacing:-2px}
+  .cat-header h2 span{color:var(--gold)}
+  .cat-header p{font-size:14px;color:rgba(255,255,255,0.35);max-width:240px;text-align:right;line-height:1.7}
+  .cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+  .cat-card{background:rgba(255,215,0,0.03);border:1px solid rgba(255,215,0,0.06);padding:40px 28px;transition:all 0.3s;cursor:default;position:relative;overflow:hidden}
+  .cat-card::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;background:var(--gold);transform:scaleX(0);transition:transform 0.3s;transform-origin:left}
+  .cat-card:hover{background:rgba(255,215,0,0.07);border-color:rgba(255,215,0,0.2)}
+  .cat-card:hover::before{transform:scaleX(1)}
+  .cat-icon{font-size:36px;margin-bottom:20px}
+  .cat-count{font-family:'Unbounded',sans-serif;font-size:11px;color:var(--gold);letter-spacing:3px;margin-bottom:12px;font-weight:700}
+  .cat-card h3{font-size:15px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.3}
+  .cat-card p{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.7}
+  .cat-range{font-size:11px;color:var(--gold);margin-top:12px;font-weight:500;letter-spacing:1px}
+
+  /* STREAM LIST - premium numbered */
+  .streams{background:var(--mid);padding:120px 60px;border-top:1px solid rgba(255,215,0,0.06)}
+  .streams-inner{max-width:1100px;margin:0 auto}
+  .streams-header{text-align:center;margin-bottom:80px}
+  .streams-header h2{font-family:'Unbounded',sans-serif;font-size:clamp(36px,5vw,72px);font-weight:900;letter-spacing:-2px;margin-bottom:16px}
+  .streams-header h2 span{color:var(--gold)}
+  .streams-header p{font-size:15px;color:rgba(255,255,255,0.35);max-width:500px;margin:0 auto;line-height:1.8}
+  .stream-group{margin-bottom:48px}
+  .stream-group-title{font-family:'Unbounded',sans-serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(255,215,0,0.1)}
+  .stream-row{display:grid;grid-template-columns:60px 1fr auto;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.03);align-items:center}
+  .stream-row:last-child{border:none}
+  .stream-num{font-family:'Unbounded',sans-serif;font-size:12px;color:rgba(255,215,0,0.3);font-weight:700}
+  .stream-name{font-size:14px;color:rgba(255,255,255,0.7)}
+  .stream-badge{font-size:10px;font-weight:600;letter-spacing:1px;padding:4px 10px;background:rgba(255,215,0,0.08);color:var(--gold);border:1px solid rgba(255,215,0,0.15);white-space:nowrap}
+
+  /* HOW IT WORKS */
+  .how{background:var(--warm);padding:120px 60px;color:var(--mid)}
+  .how-inner{max-width:1100px;margin:0 auto}
+  .how-header{text-align:center;margin-bottom:80px}
+  .how-header h2{font-family:'Unbounded',sans-serif;font-size:clamp(32px,5vw,64px);font-weight:900;color:var(--mid);letter-spacing:-2px;line-height:0.95}
+  .how-header h2 span{color:var(--gold2)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+  .step{padding:48px 32px;background:var(--mid);position:relative}
+  .step-num{font-family:'Unbounded',sans-serif;font-size:80px;color:rgba(255,215,0,0.06);font-weight:900;line-height:1;position:absolute;top:16px;right:20px}
+  .step-icon{font-size:36px;margin-bottom:20px}
+  .step h3{font-size:16px;font-weight:600;color:var(--white);margin-bottom:12px}
+  .step p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.7}
+  .step-label{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:16px;font-weight:700}
+
+  /* FINAL IMMERSIVE CTA */
+  .finale{min-height:100vh;background:var(--mid);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden}
+  .finale::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(255,215,0,0.06) 0%,transparent 70%);pointer-events:none}
+  .finale::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,215,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,215,0,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+  .finale-inner{position:relative;z-index:2;max-width:800px}
+  .finale-eyebrow{font-family:'Unbounded',sans-serif;font-size:11px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:40px;font-weight:700}
+  .finale h2{font-family:'Unbounded',sans-serif;font-size:clamp(52px,10vw,140px);font-weight:900;line-height:0.88;letter-spacing:-4px;margin-bottom:32px}
+  .finale h2 .gold{color:var(--gold)}
+  .finale h2 .outline{-webkit-text-stroke:1px rgba(255,215,0,0.4);color:transparent}
+  .finale-sub{font-size:16px;color:rgba(255,255,255,0.4);max-width:480px;margin:0 auto 64px;line-height:1.8}
+  .finale-box{background:rgba(255,215,0,0.04);border:1px solid rgba(255,215,0,0.15);padding:60px;display:inline-block;min-width:400px}
+  .finale-pages{font-size:12px;letter-spacing:3px;color:rgba(255,215,0,0.5);text-transform:uppercase;margin-bottom:12px}
+  .finale-price{font-family:'Unbounded',sans-serif;font-size:88px;color:var(--gold);font-weight:900;line-height:1;margin-bottom:8px}
+  .finale-note{font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:2px;text-transform:uppercase;margin-bottom:40px}
+  .finale-btn{display:block;background:var(--gold);color:var(--mid);font-family:'Unbounded',sans-serif;font-weight:700;font-size:14px;padding:20px 48px;text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:all 0.25s;text-align:center}
+  .finale-btn:hover{background:var(--white);transform:scale(1.04);box-shadow:0 0 80px rgba(255,215,0,0.25)}
+
+  footer{background:#020508;padding:32px;text-align:center;color:rgba(255,255,255,0.12);font-size:13px;border-top:1px solid rgba(255,215,0,0.06)}
+  footer a{color:var(--gold);text-decoration:none}
+
+  @media(max-width:768px){
+    .hero-nav,.hero-center{padding:24px}
+    .hero-bottom-strip{grid-template-columns:repeat(2,1fr)}
+    .strip-item:nth-child(2n){border-right:none}
+    .gold-wave,.categories,.streams,.how,.finale{padding:60px 24px}
+    .gw-inner{grid-template-columns:1fr;gap:40px}
+    .gw-stats{grid-template-columns:1fr 1fr}
+    .cat-header{flex-direction:column;gap:20px}
+    .cat-header p{text-align:left}
+    .cat-grid{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .finale-box{min-width:auto;width:100%;padding:40px 24px}
+    .stream-row{grid-template-columns:40px 1fr}
+    .stream-badge{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="bg-50">50</div>
+
+  <nav class="hero-nav">
+    <div class="nav-brand">Zaden James</div>
+    <div class="nav-badge">Digital Guide — New</div>
+  </nav>
+
+  <div class="hero-center">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-txt">The Complete Income Stream Reference</div>
+      <div class="eyebrow-line"></div>
+    </div>
+
+    <h1 class="hero-h1">
+      <span class="num">50</span>
+      <span class="line2">Income Streams</span>
+      <span class="line3">That Actually Pay</span>
+    </h1>
+
+    <p class="hero-sub">Find the right income stream for your skills and life. Validate it. Launch it. Build something that lasts — with 50 proven options ranked by earning potential and ease of entry.</p>
+
+    <div class="hero-cta-group">
+      <div class="page-counter">
+        <div class="counter-num">20</div>
+        <div class="counter-divider"></div>
+        <div class="counter-txt">Pages of<br>actionable content</div>
+      </div>
+      <div class="price-display">$16.00</div>
+      <a href="https://zadenjames.gumroad.com" class="hero-main-btn">Get Instant Access →</a>
+      <div class="hero-note">One-time · Instant PDF · Instant Download</div>
+    </div>
+  </div>
+
+  <div class="hero-bottom-strip">
+    <div class="strip-item"><div class="strip-val">50</div><div class="strip-lbl">Streams Covered</div></div>
+    <div class="strip-item"><div class="strip-val">5</div><div class="strip-lbl">Categories</div></div>
+    <div class="strip-item"><div class="strip-val">20</div><div class="strip-lbl">Pages</div></div>
+    <div class="strip-item"><div class="strip-val">30</div><div class="strip-lbl">Day Launch Plan</div></div>
+    <div class="strip-item"><div class="strip-val">$16</div><div class="strip-lbl">One-Time Price</div></div>
+  </div>
+</div>
+
+<!-- GOLD STATEMENT -->
+<div class="gold-wave">
+  <div class="gw-inner">
+    <div class="gw-left">
+      <h2>ONE GUIDE.<br>FIFTY<br><em>WAYS TO</em><br>EARN.</h2>
+    </div>
+    <div class="gw-right">
+      <p>Most income guides give you a vague list of ideas. This guide gives you a complete system — every stream ranked by earning potential, startup difficulty, and time to first dollar.</p>
+      <p>You will know exactly which streams match your skills, your time, and your goals — and exactly how to start the one you choose.</p>
+      <div class="gw-stats">
+        <div class="gw-stat"><div class="gw-stat-n">50</div><div class="gw-stat-l">Streams Ranked</div></div>
+        <div class="gw-stat"><div class="gw-stat-n">5</div><div class="gw-stat-l">Categories</div></div>
+        <div class="gw-stat"><div class="gw-stat-n">20</div><div class="gw-stat-l">Pages</div></div>
+        <div class="gw-stat"><div class="gw-stat-n">$16</div><div class="gw-stat-l">One-Time</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="categories">
+  <div class="cat-inner">
+    <div class="cat-header">
+      <h2>FIVE<br>CATEGORIES.<br><span>FIFTY</span><br>STREAMS.</h2>
+      <p>Every stream ranked by earning potential, startup difficulty, and time to first income so you can make an informed choice.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-icon">📄</div>
+        <div class="cat-count">10 Streams</div>
+        <h3>Digital Products</h3>
+        <p>Create once, sell forever. PDFs, templates, tools, presets and more.</p>
+        <div class="cat-range">$200 — $5,000+/mo</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🛠️</div>
+        <div class="cat-count">10 Streams</div>
+        <h3>Services</h3>
+        <p>Fastest path to income. Monetise your existing skills immediately.</p>
+        <div class="cat-range">$400 — $10,000+/mo</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">📱</div>
+        <div class="cat-count">10 Streams</div>
+        <h3>Content Creation</h3>
+        <p>Build audiences that compound. Long-game, high-ceiling income.</p>
+        <div class="cat-range">$100 — $20,000+/mo</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">🎓</div>
+        <div class="cat-count">10 Streams</div>
+        <h3>Education</h3>
+        <p>Teach what you know. Highest margins and most transformational outcomes.</p>
+        <div class="cat-range">$400 — $20,000+/mo</div>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon">💰</div>
+        <div class="cat-count">10 Streams</div>
+        <h3>Passive and Affiliate</h3>
+        <p>Build once, earn repeatedly. Affiliate commissions, royalties, and tools.</p>
+        <div class="cat-range">$100 — $10,000+/mo</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STREAM PREVIEW LIST -->
+<div class="streams">
+  <div class="streams-inner">
+    <div class="streams-header">
+      <h2>ALL <span>50</span> STREAMS<br>INSIDE THE GUIDE</h2>
+      <p>Every stream ranked and compared so you can find your perfect match in minutes — not months.</p>
+    </div>
+
+    <div class="stream-group">
+      <div class="stream-group-title">Digital Products — 10 Streams</div>
+      <div class="stream-row"><div class="stream-num">01</div><div class="stream-name">PDF Guides and Ebooks</div><div class="stream-badge">Very Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">02</div><div class="stream-name">Templates and Swipe Files</div><div class="stream-badge">Very Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">03</div><div class="stream-name">Notion Dashboards</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">04</div><div class="stream-name">Spreadsheet and Calculator Tools</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">05–10</div><div class="stream-name">Stock Photography, Music, Art, Canva Templates, Presets, Printables</div><div class="stream-badge">Low Entry</div></div>
+    </div>
+
+    <div class="stream-group">
+      <div class="stream-group-title">Services — 10 Streams</div>
+      <div class="stream-row"><div class="stream-num">11</div><div class="stream-name">Freelance Writing</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">12</div><div class="stream-name">Copywriting</div><div class="stream-badge">Medium Entry</div></div>
+      <div class="stream-row"><div class="stream-num">13</div><div class="stream-name">Social Media Management</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">14</div><div class="stream-name">Virtual Assistant</div><div class="stream-badge">Very Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">15–20</div><div class="stream-name">Graphic Design, Web Design, Video Editing, Podcast Editing, SEO, Email Marketing</div><div class="stream-badge">Low–Med Entry</div></div>
+    </div>
+
+    <div class="stream-group">
+      <div class="stream-group-title">Content Creation — 10 Streams</div>
+      <div class="stream-row"><div class="stream-num">21</div><div class="stream-name">YouTube Channel</div><div class="stream-badge">Medium Entry</div></div>
+      <div class="stream-row"><div class="stream-num">22</div><div class="stream-name">Newsletter and Email List</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">23</div><div class="stream-name">Podcast Monetisation</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">24–30</div><div class="stream-name">Blog Affiliates, Instagram, TikTok, LinkedIn, X Subscriptions, Substack, Pinterest</div><div class="stream-badge">Low Entry</div></div>
+    </div>
+
+    <div class="stream-group">
+      <div class="stream-group-title">Education and Coaching — 10 Streams</div>
+      <div class="stream-row"><div class="stream-num">31</div><div class="stream-name">Online Course</div><div class="stream-badge">Med–High Entry</div></div>
+      <div class="stream-row"><div class="stream-num">32</div><div class="stream-name">1:1 Coaching</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">33</div><div class="stream-name">Group Coaching Programs</div><div class="stream-badge">Medium Entry</div></div>
+      <div class="stream-row"><div class="stream-num">34–40</div><div class="stream-name">Live Workshops, Membership Communities, Tutoring, Language Teaching, Music, Fitness, Career</div><div class="stream-badge">Low–Med Entry</div></div>
+    </div>
+
+    <div class="stream-group">
+      <div class="stream-group-title">Passive and Affiliate — 10 Streams</div>
+      <div class="stream-row"><div class="stream-num">41</div><div class="stream-name">Affiliate Marketing</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">42</div><div class="stream-name">Amazon Associates Programme</div><div class="stream-badge">Low Entry</div></div>
+      <div class="stream-row"><div class="stream-num">43–50</div><div class="stream-name">Software Affiliate, Book Royalties, App Development, SaaS Tools, Domain Flipping, Dividends, AI Reselling, Content Licensing</div><div class="stream-badge">Low–High Entry</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how">
+  <div class="how-inner">
+    <div class="how-header">
+      <h2>FROM GUIDE<br>TO <span>INCOME</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-icon">🎯</div>
+        <div class="step-label">Step One</div>
+        <h3>Build Your Income Profile</h3>
+        <p>Identify your skills, time availability, risk tolerance, and income goal. Use the profile to filter the 50 streams down to your best 3.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-icon">🔍</div>
+        <div class="step-label">Step Two</div>
+        <h3>Choose and Validate</h3>
+        <p>Run the 72-hour validation protocol on your chosen stream. Confirm real people will pay before you invest significant time building.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-icon">🚀</div>
+        <div class="step-label">Step Three</div>
+        <h3>Launch Your MVP</h3>
+        <p>Follow the universal launch system. Build the minimum viable offering. Get it in front of the right people. Collect your first payment.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-icon">📈</div>
+        <div class="step-label">Step Four</div>
+        <h3>Scale and Stack</h3>
+        <p>Use the 30-day plan to grow your first stream. Then add a second complementary stream using the income stacking strategy.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINALE CTA -->
+<div class="finale">
+  <div class="finale-inner">
+    <div class="finale-eyebrow">Your income journey starts here</div>
+    <h2>
+      <span class="gold">FIND</span><br>
+      <span class="outline">YOUR</span><br>
+      <span>STREAM.</span>
+    </h2>
+    <p class="finale-sub">20 pages. 50 income streams. The complete system to find, validate, launch, and grow the income stream that is right for you — starting this week.</p>
+    <div class="finale-box">
+      <div class="finale-pages">📄 20 Pages of Actionable Content</div>
+      <div class="finale-price">$16.00</div>
+      <div class="finale-note">One-time · Instant PDF · Instant Download</div>
+      <a href="https://zadenjames.gumroad.com" class="finale-btn">Get Instant Access →</a>
+    </div>
+  </div>
+</div>
+
+<footer><p>© 2025 Zaden James Digital · <a href="#">Privacy Policy</a> · Delivered instantly via Gumroad</p></footer>
+</body>
+</html>
